@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ARRecorderViewController.h"
+#import "ARRecorderViewControllerDelegate.h"
+#import "ARFileNameHelper.h"
 
-@interface ARViewController : UIViewController
+const NSInteger DEFAULT_RECORDING_DURATION_SECONDS = 5;
+
+@interface ARViewController : UIViewController <ARRecorderViewControllerDelegate, UITextFieldDelegate>
+
+@property (strong, nonatomic) IBOutlet UITextField *jobNameTextField;
+@property (strong, nonatomic) IBOutlet UITextField *recordingDurationTextField;
+
+- (IBAction)recordButtonTapped:(UIButton *)sender;
+- (NSInteger)getRecordingDuration;
+- (NSString *)getJobName;
 
 @end

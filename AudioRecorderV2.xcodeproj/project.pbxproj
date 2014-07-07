@@ -21,6 +21,10 @@
 		189F405E196A803700553199 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189F4040196A803600553199 /* UIKit.framework */; };
 		189F4066196A803700553199 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 189F4064196A803700553199 /* InfoPlist.strings */; };
 		189F4068196A803700553199 /* AudioRecorderV2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 189F4067196A803700553199 /* AudioRecorderV2Tests.m */; };
+		189F4072196A804E00553199 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189F4071196A804E00553199 /* AVFoundation.framework */; };
+		189F407D196A827300553199 /* ARRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 189F407C196A827300553199 /* ARRecorder.m */; };
+		189F4080196A838600553199 /* ARRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189F407F196A838600553199 /* ARRecorderViewController.m */; };
+		189F4086196AAB5400553199 /* ARFileNameHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 189F4085196AAB5400553199 /* ARFileNameHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,14 @@
 		189F4063196A803700553199 /* AudioRecorderV2Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AudioRecorderV2Tests-Info.plist"; sourceTree = "<group>"; };
 		189F4065196A803700553199 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		189F4067196A803700553199 /* AudioRecorderV2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioRecorderV2Tests.m; sourceTree = "<group>"; };
+		189F4071196A804E00553199 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		189F407B196A827300553199 /* ARRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARRecorder.h; sourceTree = "<group>"; };
+		189F407C196A827300553199 /* ARRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRecorder.m; sourceTree = "<group>"; };
+		189F407E196A838600553199 /* ARRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARRecorderViewController.h; sourceTree = "<group>"; };
+		189F407F196A838600553199 /* ARRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRecorderViewController.m; sourceTree = "<group>"; };
+		189F4081196A863F00553199 /* ARRecorderViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARRecorderViewControllerDelegate.h; sourceTree = "<group>"; };
+		189F4084196AAB5400553199 /* ARFileNameHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARFileNameHelper.h; sourceTree = "<group>"; };
+		189F4085196AAB5400553199 /* ARFileNameHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARFileNameHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				189F4072196A804E00553199 /* AVFoundation.framework in Frameworks */,
 				189F403F196A803600553199 /* CoreGraphics.framework in Frameworks */,
 				189F4041196A803600553199 /* UIKit.framework in Frameworks */,
 				189F403D196A803600553199 /* Foundation.framework in Frameworks */,
@@ -101,6 +114,7 @@
 		189F403B196A803600553199 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				189F4071196A804E00553199 /* AVFoundation.framework */,
 				189F403C196A803600553199 /* Foundation.framework */,
 				189F403E196A803600553199 /* CoreGraphics.framework */,
 				189F4040196A803600553199 /* UIKit.framework */,
@@ -112,13 +126,16 @@
 		189F4042196A803600553199 /* AudioRecorderV2 */ = {
 			isa = PBXGroup;
 			children = (
+				189F4074196A807F00553199 /* Model */,
 				189F404B196A803600553199 /* ARAppDelegate.h */,
 				189F404C196A803600553199 /* ARAppDelegate.m */,
-				189F404E196A803600553199 /* Main.storyboard */,
-				189F4051196A803600553199 /* ARViewController.h */,
-				189F4052196A803600553199 /* ARViewController.m */,
 				189F4054196A803600553199 /* Images.xcassets */,
+				189F404E196A803600553199 /* Main.storyboard */,
 				189F4043196A803600553199 /* Supporting Files */,
+				189F4073196A806F00553199 /* View */,
+				189F4081196A863F00553199 /* ARRecorderViewControllerDelegate.h */,
+				189F4084196AAB5400553199 /* ARFileNameHelper.h */,
+				189F4085196AAB5400553199 /* ARFileNameHelper.m */,
 			);
 			path = AudioRecorderV2;
 			sourceTree = "<group>";
@@ -150,6 +167,26 @@
 				189F4064196A803700553199 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		189F4073196A806F00553199 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				189F4051196A803600553199 /* ARViewController.h */,
+				189F4052196A803600553199 /* ARViewController.m */,
+				189F407E196A838600553199 /* ARRecorderViewController.h */,
+				189F407F196A838600553199 /* ARRecorderViewController.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		189F4074196A807F00553199 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				189F407B196A827300553199 /* ARRecorder.h */,
+				189F407C196A827300553199 /* ARRecorder.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,6 +288,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				189F4049196A803600553199 /* main.m in Sources */,
+				189F4080196A838600553199 /* ARRecorderViewController.m in Sources */,
+				189F407D196A827300553199 /* ARRecorder.m in Sources */,
+				189F4086196AAB5400553199 /* ARFileNameHelper.m in Sources */,
 				189F4053196A803600553199 /* ARViewController.m in Sources */,
 				189F404D196A803600553199 /* ARAppDelegate.m in Sources */,
 			);
