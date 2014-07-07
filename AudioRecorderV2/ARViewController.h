@@ -11,7 +11,7 @@
 #import "ARRecorderViewControllerDelegate.h"
 #import "ARFileNameHelper.h"
 
-const NSInteger DEFAULT_RECORDING_DURATION_SECONDS = 5;
+const NSInteger MAX_RECORDING_DURATION_SECONDS = 180;
 
 @interface ARViewController : UIViewController <ARRecorderViewControllerDelegate, UITextFieldDelegate>
 

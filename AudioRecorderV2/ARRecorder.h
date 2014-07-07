@@ -7,9 +7,26 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
+#import "ARRecorderDelegate.h"
 
-@interface ARRecorder : NSObject
+@interface ARRecorder : NSObject <AVAudioRecorderDelegate, AVAudioPlayerDelegate>
 
-- (instancetype)initWithDuration:(NSInteger)duration andName:(NSString *)name;
+@property (strong, nonatomic) id <ARRecorderDelegate> delegate;
+
+@property (nonatomic) NSInteger duration;
+@property (strong, nonatomic) NSString *recordingFileName;
+@property (nonatomic) BOOL successfullyRecorded;
+
+- (instancetype)initWithDuration:(NSInteger)duration name:(NSString *)name delegate:(id<ARRecorderDelegate>)delegate;
+
+- (void)startRecording;
+- (void)stopRecording;
+- (void)startPlaying;
+- (void)stopPlaying;
+- (void)stopPlayingAndRecording;
+- (NSInteger)timeLeft;
+- (BOOL)recording;
+- (BOOL)playing;
 
 @end

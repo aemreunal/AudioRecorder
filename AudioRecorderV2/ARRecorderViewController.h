@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "ARRecorderViewControllerDelegate.h"
+#import "ARRecorderDelegate.h"
 #import "ARRecorder.h"
 
-@interface ARRecorderViewController : UIViewController
+@interface ARRecorderViewController : UIViewController <ARRecorderDelegate>
 
 @property (strong, nonatomic) id <ARRecorderViewControllerDelegate> delegate;
 

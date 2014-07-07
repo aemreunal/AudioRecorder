@@ -29,11 +29,17 @@
 }
 
 - (IBAction)recordButtonTapped:(UIButton *)sender {
-//    [self performSegueWithIdentifier:@"RecorderViewModalSegue" sender:self];
+    if (![self isDurationTextValid]) {
+        UIAlertView *durationError = [[UIAlertView alloc] initWithTitle:@"Invalid Duration" message:@"Please enter a duration between 1 and 180." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [durationError show];
+    }
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    return [self isDurationTextValid];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"RecorderViewModalSegue"]) {
         ARRecorderViewController *recorderViewController = (ARRecorderViewController *) segue.destinationViewController;
         recorderViewController.delegate = self;
@@ -43,12 +49,6 @@
 }
 
 - (NSInteger)getRecordingDuration {
-    NSInteger recordingDuration = [self.recordingDurationTextField.text integerValue];
-    if (recordingDuration) {
-        return recordingDuration;
-    } else {
-        return DEFAULT_RECORDING_DURATION_SECONDS;
-    }
     return [self.recordingDurationTextField.text integerValue];
 }
 
@@ -58,6 +58,11 @@
         jobName = @"job";
     }
     return [ARFileNameHelper getFileName:jobName];
+}
+
+-(BOOL)isDurationTextValid {
+    NSInteger recordingDuration = [self getRecordingDuration];
+    return (recordingDuration > 0 && recordingDuration <= MAX_RECORDING_DURATION_SECONDS);
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

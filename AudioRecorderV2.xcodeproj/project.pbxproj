@@ -68,6 +68,7 @@
 		189F4085196AAB5400553199 /* ARFileNameHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARFileNameHelper.m; sourceTree = "<group>"; };
 		189F4087196AB32800553199 /* ARRecordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARRecordButton.h; sourceTree = "<group>"; };
 		189F4088196AB32800553199 /* ARRecordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRecordButton.m; sourceTree = "<group>"; };
+		189F408B196AC81900553199 /* ARRecorderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARRecorderDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +130,7 @@
 		189F4042196A803600553199 /* AudioRecorderV2 */ = {
 			isa = PBXGroup;
 			children = (
+				189F408A196AC7FC00553199 /* Delegates */,
 				189F4074196A807F00553199 /* Model */,
 				189F404B196A803600553199 /* ARAppDelegate.h */,
 				189F404C196A803600553199 /* ARAppDelegate.m */,
@@ -136,7 +138,6 @@
 				189F404E196A803600553199 /* Main.storyboard */,
 				189F4043196A803600553199 /* Supporting Files */,
 				189F4073196A806F00553199 /* View */,
-				189F4081196A863F00553199 /* ARRecorderViewControllerDelegate.h */,
 				189F4084196AAB5400553199 /* ARFileNameHelper.h */,
 				189F4085196AAB5400553199 /* ARFileNameHelper.m */,
 			);
@@ -192,6 +193,15 @@
 				189F407C196A827300553199 /* ARRecorder.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		189F408A196AC7FC00553199 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				189F4081196A863F00553199 /* ARRecorderViewControllerDelegate.h */,
+				189F408B196AC81900553199 /* ARRecorderDelegate.h */,
+			);
+			name = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -21,7 +21,7 @@
                                 </state>
                                 <connections>
                                     <action selector="recordButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Kns-hq-LEh"/>
-                                    <segue destination="ERk-CQ-zIe" kind="modal" identifier="RecorderViewModalSegue" id="vhf-Bz-KgT"/>
+                                    <segue destination="ERk-CQ-zIe" kind="modal" identifier="RecorderViewModalSegue" id="pao-HU-zjc"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5" borderStyle="roundedRect" placeholder="Duration" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" id="YI7-1r-KrX">
@@ -82,25 +82,41 @@
                                     <action selector="cancelButtonTapped:" destination="ERk-CQ-zIe" eventType="touchUpInside" id="2fl-6z-nVV"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dGH-b5-KdP">
+                                <rect key="frame" x="85" y="391" width="151" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Submit Recording">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="ERk-CQ-zIe" eventType="touchUpInside" id="hOa-g3-575"/>
+                                    <action selector="submitButtonTapped:" destination="ERk-CQ-zIe" eventType="touchUpInside" id="R0E-jN-x5A"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lcw-Ff-WzP" customClass="ARRecordButton">
                                 <rect key="frame" x="80" y="77" width="160" height="160"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration" label="Start recording button"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <state key="normal" title="Record">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="recordButtonTapped:" destination="ERk-CQ-zIe" eventType="touchUpInside" id="FwL-8b-8Dp"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time left:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="i8q-Z7-UGW">
-                                <rect key="frame" x="80" y="263" width="151" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="85" y="263" width="151" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZnX-mo-eL6">
-                                <rect key="frame" x="80" y="278" width="151" height="104"/>
+                                <rect key="frame" x="85" y="279" width="151" height="104"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="83"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -113,11 +129,12 @@
                     <connections>
                         <outlet property="durationCounter" destination="ZnX-mo-eL6" id="qcs-V0-1rm"/>
                         <outlet property="recordButton" destination="lcw-Ff-WzP" id="4pm-iz-K7H"/>
+                        <outlet property="submitRecordingButton" destination="dGH-b5-KdP" id="agT-Qq-Egq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xVD-nv-XNb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="934" y="211"/>
+            <point key="canvasLocation" x="460" y="121"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
