@@ -10,17 +10,18 @@
 
 @interface ARRecorder ()
 
-@property (strong, nonatomic) NSInteger *duration;
+@property (nonatomic) NSInteger duration;
 @property (strong, nonatomic) NSString *name;
 
 @end
 
 @implementation ARRecorder
 
-- (instancetype)initWithDuration:(NSInteger *)duration andName:(NSString *)name {
+- (instancetype)initWithDuration:(NSInteger)duration andName:(NSString *)name {
     self = [super init];
     if (self) {
-        
+        self.duration = duration;
+        self.name = name;
     }
     return self;
 }

@@ -10,4 +10,6 @@
 
 @interface ARRecorder : NSObject
 
+- (instancetype)initWithDuration:(NSInteger)duration andName:(NSString *)name;
+
 @end

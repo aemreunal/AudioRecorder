@@ -11,28 +11,27 @@
 @interface ARRecorderViewController ()
 
 @property (strong, nonatomic) ARRecorder *recorder;
+@property (strong, nonatomic) IBOutlet UIButton *recordButton;
+@property (strong, nonatomic) IBOutlet UILabel *durationCounter;
 
 @end
 
 @implementation ARRecorderViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.recorder = [[ARRecorder alloc] initWithDuration:self.recordingDuration andName:self.recordingName];
+    self.durationCounter.text = [NSString stringWithFormat:@"%i", self.recordingDuration];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
