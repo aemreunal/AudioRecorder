@@ -24,21 +24,21 @@
         self.recordingFileName = [NSString stringWithFormat:@"%@.m4a", name];
         self.delegate = delegate;
         self.successfullyRecorded = NO;
-        
+
         // Set the audio file
         NSArray *pathComponents = [NSArray arrayWithObjects: [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject], self.recordingFileName, nil];
         NSURL *outputFileURL = [NSURL fileURLWithPathComponents:pathComponents];
-        
+
         // Setup audio session
         AVAudioSession *session = [AVAudioSession sharedInstance];
         [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
-        
+
         // Define the recorder setting
         NSMutableDictionary *recordSetting = [[NSMutableDictionary alloc] init];
         [recordSetting setValue:[NSNumber numberWithInt:kAudioFormatMPEG4AAC] forKey:AVFormatIDKey];
         [recordSetting setValue:[NSNumber numberWithFloat:44100.0] forKey:AVSampleRateKey];
         [recordSetting setValue:[NSNumber numberWithInt: 2] forKey:AVNumberOfChannelsKey];
-        
+
         // Initiate and prepare the recorder
         recorder = [[AVAudioRecorder alloc] initWithURL:outputFileURL settings:recordSetting error:NULL];
         recorder.delegate = self;
@@ -52,10 +52,10 @@
 - (void)startRecording {
     [self stopPlayingAndRecording];
     [self.delegate startDurationCounter];
-    
+
     AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setActive:YES error:nil];
-    
+
     [recorder recordForDuration:self.duration];
 }
 
@@ -64,7 +64,7 @@
         [self.delegate stopDurationCounter];
         [recorder stop];
         [recorder deleteRecording];
-        
+
         AVAudioSession *audioSession = [AVAudioSession sharedInstance];
         [audioSession setActive:NO error:nil];
     }
@@ -72,7 +72,7 @@
 
 - (void)startPlaying {
     [self stopPlayingAndRecording];
-    
+
     player = [[AVAudioPlayer alloc] initWithContentsOfURL:recorder.url error:nil];
     [player setDelegate:self];
     [player play];
@@ -91,7 +91,7 @@
 
 - (NSInteger)timeLeft {
     if (recorder) {
-        return self.duration - [recorder currentTime] + 1;
+        return (NSInteger) (self.duration - [recorder currentTime] + 1);
     } else {
         return 0;
     }
