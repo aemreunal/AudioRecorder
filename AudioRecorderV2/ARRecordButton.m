@@ -25,6 +25,8 @@
 }
 
 - (void)drawRect:(CGRect)rect {
+    self.titleLabel.textAlignment = NSTextAlignmentCenter;
+    
     // Color Declarations
     UIColor *color = [UIColor colorWithRed:1 green:0.114 blue:0.114 alpha:1];
     

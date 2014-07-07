@@ -84,15 +84,15 @@
     self.submitRecordingButton.hidden = YES;
 }
 
-- (void)prepareForStopping {
-    self.recordButton.titleLabel.text = @"Stop";
+-(void)prepareForListeningAndSubmitting {
+    self.recordButton.titleLabel.text = @"Listen";
+    self.durationCounter.text = @"0";
     self.submitRecordingButton.enabled = YES;
     self.submitRecordingButton.hidden = NO;
 }
 
--(void)prepareForListeningAndSubmitting {
-    self.recordButton.titleLabel.text = @"Listen";
-    self.durationCounter.text = @"0";
+- (void)prepareForStopping {
+    self.recordButton.titleLabel.text = @"Stop";
     self.submitRecordingButton.enabled = YES;
     self.submitRecordingButton.hidden = NO;
 }
