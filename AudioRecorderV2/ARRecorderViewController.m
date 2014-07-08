@@ -23,6 +23,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        // Pass
     }
     return self;
 }
@@ -35,51 +36,53 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+//    [self stopDurationCounter];
+//    self.timer = nil;
+//    self.recorder = nil;
 }
 
 - (IBAction)recordButtonTapped:(UIButton *)sender {
     if (!self.recorder.successfullyRecorded) {
         if ([self.recorder recording]) {
             // Have to cancel recording
-            [self.recorder stopRecording];
-            [self stopDurationCounter];
             [self switchToReadyToRecordState];
         } else {
             // Have to start recording
             [self switchToRecordingState];
-            [self startDurationCounter];
-            [self.recorder startRecording];
         }
     } else {
         if ([self.recorder playing]) {
             // Can stop listening
-            [self.recorder stopPlaying];
             [self switchToReadyToListenAndSubmitState];
         } else {
             // Can listen
             [self switchToListeningState];
-            [self.recorder startPlaying];
         }
     }
 }
 
 - (void)switchToReadyToRecordState {
+    [self.recorder stopRecording];
+    [self stopDurationCounter];
     [self setButtonLabel:@"Record" submitButtonVisibility:NO];
     self.durationCounter.text = [NSString stringWithFormat:@"%i", self.recordingDuration];
 }
 
 - (void)switchToRecordingState {
     [self setButtonLabel:@"Cancel" submitButtonVisibility:NO];
+    [self startDurationCounter];
+    [self.recorder startRecording];
 }
 
 - (void)switchToReadyToListenAndSubmitState {
+    [self.recorder stopPlaying];
     [self setButtonLabel:@"Listen" submitButtonVisibility:YES];
     self.durationCounter.text = @"0";
 }
 
 - (void)switchToListeningState {
     [self setButtonLabel:@"Stop" submitButtonVisibility:YES];
+    [self.recorder startPlaying];
 }
 
 - (void)setButtonLabel:(NSString *)label submitButtonVisibility:(BOOL)visible {
@@ -103,12 +106,16 @@
 }
 
 - (void)stopDurationCounter {
-    [self.timer invalidate];
+    if(self.timer) {
+        [self.timer invalidate];
+    }
 }
 
 - (IBAction)submitButtonTapped:(UIButton *)sender {
     [self.recorder stopPlaying];
-    [self.delegate recordingDidFinish:self withFileName:self.recorder.recordingFileName];
+    if (self.recorder.successfullyRecorded) {
+        [self.delegate recordingDidFinish:self withFileName:self.recorder.recordingFileName];
+    }
 }
 
 - (IBAction)cancelButtonTapped:(UIButton *)sender {

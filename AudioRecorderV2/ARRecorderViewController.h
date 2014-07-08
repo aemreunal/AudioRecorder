@@ -20,6 +20,12 @@
 
 - (void)setButtonLabel:(NSString *)label submitButtonVisibility:(BOOL)visible;
 
+- (void)startDurationCounter;
+
+- (void)stopDurationCounter;
+
+- (void)updateDurationCounter;
+
 - (IBAction)recordButtonTapped:(UIButton *)sender;
 
 - (IBAction)submitButtonTapped:(UIButton *)sender;

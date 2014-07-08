@@ -18,10 +18,4 @@
 
 - (void)switchToListeningState;
 
-- (void)startDurationCounter;
-
-- (void)stopDurationCounter;
-
-- (void)updateDurationCounter;
-
 @end

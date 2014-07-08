@@ -25,27 +25,25 @@
         self.delegate = delegate;
         self.successfullyRecorded = NO;
 
-        // Set the audio file
-        NSArray *pathComponents = [NSArray arrayWithObjects:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject], self.recordingFileName, nil];
-        NSURL *outputFileURL = [NSURL fileURLWithPathComponents:pathComponents];
-
-        // Setup audio session
-        AVAudioSession *session = [AVAudioSession sharedInstance];
-        [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
-
-        // Define the recorder setting
-        NSMutableDictionary *recordSetting = [[NSMutableDictionary alloc] init];
-        [recordSetting setValue:[NSNumber numberWithInt:kAudioFormatMPEG4AAC] forKey:AVFormatIDKey];
-        [recordSetting setValue:[NSNumber numberWithFloat:44100.0] forKey:AVSampleRateKey];
-        [recordSetting setValue:[NSNumber numberWithInt:2] forKey:AVNumberOfChannelsKey];
-
-        // Initiate and prepare the recorder
-        recorder = [[AVAudioRecorder alloc] initWithURL:outputFileURL settings:recordSetting error:NULL];
-        recorder.delegate = self;
-        recorder.meteringEnabled = YES;
-        [recorder prepareToRecord];
+        [self setAudioSession];
+        [self setRecorder];
     }
     return self;
+}
+
+- (void)setAudioSession {
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+}
+
+- (void)setRecorder {
+    NSArray *pathComponents = [NSArray arrayWithObjects:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject], self.recordingFileName, nil];
+    NSURL *outputFileURL = [NSURL fileURLWithPathComponents:pathComponents];
+
+    recorder = [[AVAudioRecorder alloc] initWithURL:outputFileURL settings:[self getRecorderSettings] error:NULL];
+    recorder.delegate = self;
+    recorder.meteringEnabled = YES;
+    [recorder prepareToRecord];
 }
 
 - (void)startRecording {
@@ -109,12 +107,15 @@
 }
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Done"
-                                                    message:@"Finished playing the recording!"
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
+    [self.delegate switchToReadyToListenAndSubmitState];
+}
+
+- (NSMutableDictionary *)getRecorderSettings {
+    NSMutableDictionary *recordSettings = [[NSMutableDictionary alloc] init];
+    [recordSettings setValue:[NSNumber numberWithInt:kAudioFormatMPEG4AAC] forKey:AVFormatIDKey];
+    [recordSettings setValue:[NSNumber numberWithFloat:44100.0] forKey:AVSampleRateKey];
+    [recordSettings setValue:[NSNumber numberWithInt:2] forKey:AVNumberOfChannelsKey];
+    return recordSettings;
 }
 
 @end
