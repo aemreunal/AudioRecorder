@@ -14,16 +14,14 @@
 
 @implementation ARViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     self.jobNameTextField.delegate = self;
     self.recordingDurationTextField.delegate = self;
     [self.recordingDurationTextField setReturnKeyType:UIReturnKeyNext];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -52,7 +50,7 @@
     return [self.recordingDurationTextField.text integerValue];
 }
 
--(NSString *)getJobName {
+- (NSString *)getJobName {
     NSString *jobName = [ARFileNameHelper stringByRemovingWhitespace:self.jobNameTextField.text];
     if ([jobName length] == 0) {
         jobName = @"job";
@@ -60,7 +58,7 @@
     return [ARFileNameHelper getFileName:jobName];
 }
 
--(BOOL)isDurationTextValid {
+- (BOOL)isDurationTextValid {
     NSInteger recordingDuration = [self getRecordingDuration];
     return (recordingDuration > 0 && recordingDuration <= MAX_RECORDING_DURATION_SECONDS);
 }

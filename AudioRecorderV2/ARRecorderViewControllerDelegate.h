@@ -13,7 +13,8 @@
 
 @protocol ARRecorderViewControllerDelegate <NSObject>
 
-- (void)recordingDidCancel:(ARRecorderViewController *) sender;
-- (void)recordingDidFinish:(ARRecorderViewController *) sender withFileName:(NSString *)fileName;
+- (void)recordingDidCancel:(ARRecorderViewController *)sender;
+
+- (void)recordingDidFinish:(ARRecorderViewController *)sender withFileName:(NSString *)fileName;
 
 @end

@@ -17,7 +17,7 @@
 
 @implementation ARRecorder
 
-- (instancetype)initWithDuration:(NSInteger)duration name:(NSString *)name delegate:(id<ARRecorderDelegate>)delegate {
+- (instancetype)initWithDuration:(NSInteger)duration name:(NSString *)name delegate:(id <ARRecorderDelegate>)delegate {
     self = [super init];
     if (self) {
         self.duration = duration;
@@ -26,7 +26,7 @@
         self.successfullyRecorded = NO;
 
         // Set the audio file
-        NSArray *pathComponents = [NSArray arrayWithObjects: [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject], self.recordingFileName, nil];
+        NSArray *pathComponents = [NSArray arrayWithObjects:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject], self.recordingFileName, nil];
         NSURL *outputFileURL = [NSURL fileURLWithPathComponents:pathComponents];
 
         // Setup audio session
@@ -37,7 +37,7 @@
         NSMutableDictionary *recordSetting = [[NSMutableDictionary alloc] init];
         [recordSetting setValue:[NSNumber numberWithInt:kAudioFormatMPEG4AAC] forKey:AVFormatIDKey];
         [recordSetting setValue:[NSNumber numberWithFloat:44100.0] forKey:AVSampleRateKey];
-        [recordSetting setValue:[NSNumber numberWithInt: 2] forKey:AVNumberOfChannelsKey];
+        [recordSetting setValue:[NSNumber numberWithInt:2] forKey:AVNumberOfChannelsKey];
 
         // Initiate and prepare the recorder
         recorder = [[AVAudioRecorder alloc] initWithURL:outputFileURL settings:recordSetting error:NULL];
@@ -102,16 +102,16 @@
     return player.playing;
 }
 
-- (void) audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag{
+- (void)audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag {
     if (flag) {
         // pass
     }
 }
 
-- (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Done"
-                                                    message: @"Finished playing the recording!"
-                                                   delegate: nil
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Done"
+                                                    message:@"Finished playing the recording!"
+                                                   delegate:nil
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];

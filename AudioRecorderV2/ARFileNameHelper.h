@@ -11,8 +11,11 @@
 @interface ARFileNameHelper : NSObject
 
 + (NSString *)getFileName:(NSString *)baseName;
+
 + (NSString *)getDeviceModel;
+
 + (NSString *)getCurrentDateFormatted;
+
 + (NSString *)stringByRemovingWhitespace:(NSString *)string;
 
 @end
