@@ -10,11 +10,11 @@
 
 @interface ARRecorderViewController ()
 
-@property (strong, nonatomic) ARRecorder *recorder;
-@property (strong, nonatomic) IBOutlet UIButton *recordButton;
-@property (strong, nonatomic) IBOutlet UIButton *submitRecordingButton;
-@property (strong, nonatomic) IBOutlet UILabel *durationCounter;
-@property (strong, nonatomic) NSTimer* timer;
+@property(strong, nonatomic) ARRecorder *recorder;
+@property(strong, nonatomic) IBOutlet UIButton *recordButton;
+@property(strong, nonatomic) IBOutlet UIButton *submitRecordingButton;
+@property(strong, nonatomic) IBOutlet UILabel *durationCounter;
+@property(strong, nonatomic) NSTimer *timer;
 
 @end
 
@@ -30,8 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.recorder = [[ARRecorder alloc] initWithDuration:self.recordingDuration name:self.recordingName delegate:self];
-    self.durationCounter.text = [NSString stringWithFormat:@"%i", self.recordingDuration];
-    [self prepareForRecording];
+    [self switchToReadyToRecordState];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,72 +42,72 @@
     if (!self.recorder.successfullyRecorded) {
         if ([self.recorder recording]) {
             // Have to cancel recording
-            [self prepareForRecording];
             [self.recorder stopRecording];
+            [self stopDurationCounter];
+            [self switchToReadyToRecordState];
         } else {
             // Have to start recording
-            [self prepareForCancelling];
+            [self switchToRecordingState];
+            [self startDurationCounter];
             [self.recorder startRecording];
         }
     } else {
         if ([self.recorder playing]) {
             // Can stop listening
-            [self prepareForListeningAndSubmitting];
             [self.recorder stopPlaying];
+            [self switchToReadyToListenAndSubmitState];
         } else {
             // Can listen
-            [self prepareForStopping];
+            [self switchToListeningState];
             [self.recorder startPlaying];
         }
     }
 }
 
+- (void)switchToReadyToRecordState {
+    [self setButtonLabel:@"Record" submitButtonVisibility:NO];
+    self.durationCounter.text = [NSString stringWithFormat:@"%i", self.recordingDuration];
+}
+
+- (void)switchToRecordingState {
+    [self setButtonLabel:@"Cancel" submitButtonVisibility:NO];
+}
+
+- (void)switchToReadyToListenAndSubmitState {
+    [self setButtonLabel:@"Listen" submitButtonVisibility:YES];
+    self.durationCounter.text = @"0";
+}
+
+- (void)switchToListeningState {
+    [self setButtonLabel:@"Stop" submitButtonVisibility:YES];
+}
+
+- (void)setButtonLabel:(NSString *)label submitButtonVisibility:(BOOL)visible {
+    [self.recordButton setTitle:label forState:UIControlStateNormal];
+    [self.submitRecordingButton setHidden:!visible];
+}
+
+- (void)startDurationCounter {
+    self.timer = [NSTimer timerWithTimeInterval:0.2f target:self selector:@selector(updateDurationCounter) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+}
+
+- (void)updateDurationCounter {
+    self.durationCounter.text = [NSString stringWithFormat:@"%i", [self.recorder timeLeft]];
+}
+
+- (void)stopDurationCounter {
+    [self.timer invalidate];
+}
+
 - (IBAction)submitButtonTapped:(UIButton *)sender {
+    [self.recorder stopPlayingAndRecording];
     [self.delegate recordingDidFinish:self withFileName:self.recorder.recordingFileName];
 }
 
 - (IBAction)cancelButtonTapped:(UIButton *)sender {
     [self.recorder stopPlayingAndRecording];
     [self.delegate recordingDidCancel:self];
-}
-
-- (void)prepareForRecording {
-    self.recordButton.titleLabel.text = @"Record";
-    self.submitRecordingButton.enabled = NO;
-    self.submitRecordingButton.hidden = YES;
-}
-
-- (void)prepareForCancelling {
-    self.recordButton.titleLabel.text = @"Cancel";
-    self.submitRecordingButton.enabled = NO;
-    self.submitRecordingButton.hidden = YES;
-}
-
--(void)prepareForListeningAndSubmitting {
-    self.recordButton.titleLabel.text = @"Listen";
-    self.durationCounter.text = @"0";
-    self.submitRecordingButton.enabled = YES;
-    self.submitRecordingButton.hidden = NO;
-}
-
-- (void)prepareForStopping {
-    self.recordButton.titleLabel.text = @"Stop";
-    self.submitRecordingButton.enabled = YES;
-    self.submitRecordingButton.hidden = NO;
-}
-
--(void)startDurationCounter {
-    self.timer = [NSTimer timerWithTimeInterval:0.2f target:self selector:@selector(updateDurationCounter) userInfo:nil repeats:YES];
-    [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
-}
-
--(void)stopDurationCounter {
-    [self.timer invalidate];
-    self.durationCounter.text = [NSString stringWithFormat:@"%i", self.recordingDuration];
-}
-
--(void)updateDurationCounter {
-    self.durationCounter.text = [NSString stringWithFormat:@"%i", [self.recorder timeLeft]];
 }
 
 @end

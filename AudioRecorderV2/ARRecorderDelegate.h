@@ -10,10 +10,18 @@
 
 @protocol ARRecorderDelegate <NSObject>
 
--(void)prepareForRecording;
--(void)prepareForListeningAndSubmitting;
--(void)startDurationCounter;
--(void)stopDurationCounter;
--(void)updateDurationCounter;
+- (void)switchToReadyToRecordState;
+
+- (void)switchToRecordingState;
+
+- (void)switchToReadyToListenAndSubmitState;
+
+- (void)switchToListeningState;
+
+- (void)startDurationCounter;
+
+- (void)stopDurationCounter;
+
+- (void)updateDurationCounter;
 
 @end

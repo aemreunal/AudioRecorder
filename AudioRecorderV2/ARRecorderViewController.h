@@ -13,10 +13,16 @@
 
 @interface ARRecorderViewController : UIViewController <ARRecorderDelegate>
 
-@property (strong, nonatomic) id <ARRecorderViewControllerDelegate> delegate;
+@property(strong, nonatomic) id <ARRecorderViewControllerDelegate> delegate;
 
-@property (nonatomic) NSInteger recordingDuration;
-@property (strong, nonatomic) NSString *recordingName;
+@property(nonatomic) NSInteger recordingDuration;
+@property(strong, nonatomic) NSString *recordingName;
+
+- (void)setButtonLabel:(NSString *)label submitButtonVisibility:(BOOL)visible;
+
+- (IBAction)recordButtonTapped:(UIButton *)sender;
+
+- (IBAction)submitButtonTapped:(UIButton *)sender;
 
 - (IBAction)cancelButtonTapped:(UIButton *)sender;
 

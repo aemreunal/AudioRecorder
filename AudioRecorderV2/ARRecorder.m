@@ -44,14 +44,12 @@
         recorder.delegate = self;
         recorder.meteringEnabled = YES;
         [recorder prepareToRecord];
-        [self.delegate prepareForRecording];
     }
     return self;
 }
 
 - (void)startRecording {
     [self stopPlayingAndRecording];
-    [self.delegate startDurationCounter];
 
     AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setActive:YES error:nil];
@@ -61,7 +59,6 @@
 
 - (void)stopRecording {
     if (recorder.recording) {
-        [self.delegate stopDurationCounter];
         [recorder stop];
         [recorder deleteRecording];
 
@@ -105,10 +102,10 @@
     return player.playing;
 }
 
-- (void) audioRecorderDidFinishRecording:(AVAudioRecorder *)avrecorder successfully:(BOOL)flag{
+- (void) audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag{
     if (flag) {
         [self.delegate stopDurationCounter];
-        [self.delegate prepareForListeningAndSubmitting];
+        [self.delegate switchToReadyToListenAndSubmitState];
         self.successfullyRecorded = YES;
     }
 }
