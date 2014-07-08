@@ -104,9 +104,7 @@
 
 - (void) audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag{
     if (flag) {
-        [self.delegate stopDurationCounter];
-        [self.delegate switchToReadyToListenAndSubmitState];
-        self.successfullyRecorded = YES;
+        // pass
     }
 }
 

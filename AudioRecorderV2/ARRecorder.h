@@ -12,21 +12,28 @@
 
 @interface ARRecorder : NSObject <AVAudioRecorderDelegate, AVAudioPlayerDelegate>
 
-@property (strong, nonatomic) id <ARRecorderDelegate> delegate;
+@property(strong, nonatomic) id <ARRecorderDelegate> delegate;
 
-@property (nonatomic) NSInteger duration;
-@property (strong, nonatomic) NSString *recordingFileName;
-@property (nonatomic) BOOL successfullyRecorded;
+@property(nonatomic) NSInteger duration;
+@property(strong, nonatomic) NSString *recordingFileName;
+@property(nonatomic) BOOL successfullyRecorded;
 
-- (instancetype)initWithDuration:(NSInteger)duration name:(NSString *)name delegate:(id<ARRecorderDelegate>)delegate;
+- (instancetype)initWithDuration:(NSInteger)duration name:(NSString *)name delegate:(id <ARRecorderDelegate>)delegate;
 
 - (void)startRecording;
+
 - (void)stopRecording;
+
 - (void)startPlaying;
+
 - (void)stopPlaying;
+
 - (void)stopPlayingAndRecording;
+
 - (NSInteger)timeLeft;
+
 - (BOOL)recording;
+
 - (BOOL)playing;
 
 @end

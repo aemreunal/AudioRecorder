@@ -93,7 +93,13 @@
 }
 
 - (void)updateDurationCounter {
-    self.durationCounter.text = [NSString stringWithFormat:@"%i", [self.recorder timeLeft]];
+    NSInteger timeLeft = [self.recorder timeLeft];
+    self.durationCounter.text = [NSString stringWithFormat:@"%i", timeLeft];
+    if ([self.recorder timeLeft] <= 0) {
+        self.recorder.successfullyRecorded = YES;
+        [self stopDurationCounter];
+        [self switchToReadyToListenAndSubmitState];
+    }
 }
 
 - (void)stopDurationCounter {
@@ -101,7 +107,7 @@
 }
 
 - (IBAction)submitButtonTapped:(UIButton *)sender {
-    [self.recorder stopPlayingAndRecording];
+    [self.recorder stopPlaying];
     [self.delegate recordingDidFinish:self withFileName:self.recorder.recordingFileName];
 }
 
