@@ -14,6 +14,7 @@
 @property(strong, nonatomic) IBOutlet UIButton *recordButton;
 @property(strong, nonatomic) IBOutlet UIButton *submitRecordingButton;
 @property(strong, nonatomic) IBOutlet UILabel *durationCounter;
+@property(strong, nonatomic) IBOutlet AROvalTimer *ovalTimer;
 @property(strong, nonatomic) NSTimer *timer;
 
 @end
@@ -30,7 +31,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.recorder = [[ARRecorder alloc] initWithDuration:self.recordingDuration name:self.recordingName delegate:self];
+    self.recorder = [[ARRecorder alloc] initWithDuration:(long)self.recordingDuration name:self.recordingName delegate:self];
     [self switchToReadyToRecordState];
 }
 
@@ -64,18 +65,22 @@
 - (void)switchToReadyToRecordState {
     [self.recorder stopRecording];
     [self stopDurationCounter];
+//    self.ovalTimer.frame = CGRectMake(67, 57, 200, 200);
+    [self.ovalTimer initTimerWithDuration:(CGFloat)self.recordingDuration];
     [self setButtonLabel:@"Record" submitButtonVisibility:NO];
-    self.durationCounter.text = [NSString stringWithFormat:@"%i", self.recordingDuration];
+    self.durationCounter.text = [NSString stringWithFormat:@"%li", (long)self.recordingDuration];
 }
 
 - (void)switchToRecordingState {
     [self setButtonLabel:@"Cancel" submitButtonVisibility:NO];
     [self startDurationCounter];
+    [self.ovalTimer startTimer];
     [self.recorder startRecording];
 }
 
 - (void)switchToReadyToListenAndSubmitState {
     [self.recorder stopPlaying];
+    [self.ovalTimer initTimerWithDuration:(CGFloat)self.recordingDuration];
     [self setButtonLabel:@"Listen" submitButtonVisibility:YES];
     self.durationCounter.text = @"0";
 }
@@ -97,10 +102,11 @@
 
 - (void)updateDurationCounter {
     NSInteger timeLeft = [self.recorder timeLeft];
-    self.durationCounter.text = [NSString stringWithFormat:@"%i", timeLeft];
+    self.durationCounter.text = [NSString stringWithFormat:@"%li", (long)timeLeft];
     if ([self.recorder timeLeft] <= 0) {
         self.recorder.successfullyRecorded = YES;
         [self stopDurationCounter];
+        [self.ovalTimer stopTimer];
         [self switchToReadyToListenAndSubmitState];
     }
 }

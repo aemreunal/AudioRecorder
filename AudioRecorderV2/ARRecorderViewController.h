@@ -10,6 +10,8 @@
 #import "ARRecorderViewControllerDelegate.h"
 #import "ARRecorderDelegate.h"
 #import "ARRecorder.h"
+#import "AROvalTimer.h"
+
 
 @interface ARRecorderViewController : UIViewController <ARRecorderDelegate>
 
