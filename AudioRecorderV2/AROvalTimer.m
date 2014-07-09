@@ -38,20 +38,12 @@
 
     if (self.timer) {
         self.ovalPath = [UIBezierPath bezierPath];
-        if (FILLED) {
-            [self.ovalPath addArcWithCenter:CGPointMake(self.halfSize, self.halfSize) radius:self.halfSize startAngle:self.ovalTimerStartAngle * M_PI / 180 endAngle:OVAL_TIMER_END_ANGLE * M_PI / 180 clockwise:YES];
-            [self.ovalPath addLineToPoint:CGPointMake(self.halfSize, self.halfSize)];
-            [self.ovalPath closePath];
 
-            [[UIColor whiteColor] setFill];
-            [self.ovalPath fill];
-        } else {
-            [self.ovalPath addArcWithCenter:CGPointMake(self.halfSize, self.halfSize) radius:self.halfSize - STROKE_WIDTH startAngle:self.ovalTimerStartAngle * M_PI / 180 endAngle:OVAL_TIMER_END_ANGLE * M_PI / 180 clockwise:YES];
+        [self.ovalPath addArcWithCenter:CGPointMake(self.halfSize, self.halfSize) radius:self.halfSize - STROKE_WIDTH startAngle:self.ovalTimerStartAngle * M_PI / 180 endAngle:OVAL_TIMER_END_ANGLE * M_PI / 180 clockwise:YES];
 
-            [[UIColor whiteColor] setStroke];
-            self.ovalPath.lineWidth = STROKE_WIDTH;
-            [self.ovalPath stroke];
-        }
+        [[UIColor whiteColor] setStroke];
+        self.ovalPath.lineWidth = STROKE_WIDTH;
+        [self.ovalPath stroke];
     }
 }
 
