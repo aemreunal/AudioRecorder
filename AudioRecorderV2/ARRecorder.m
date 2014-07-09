@@ -8,10 +8,10 @@
 
 #import "ARRecorder.h"
 
-@interface ARRecorder () {
-    AVAudioRecorder *recorder;
-    AVAudioPlayer *player;
-}
+@interface ARRecorder ()
+
+@property(nonatomic, strong) AVAudioRecorder *recorder;
+@property(nonatomic, strong) AVAudioPlayer *player;
 
 @end
 
@@ -40,42 +40,40 @@
     NSArray *pathComponents = [NSArray arrayWithObjects:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject], self.recordingFileName, nil];
     NSURL *outputFileURL = [NSURL fileURLWithPathComponents:pathComponents];
 
-    recorder = [[AVAudioRecorder alloc] initWithURL:outputFileURL settings:[self getRecorderSettings] error:NULL];
-    recorder.delegate = self;
-    recorder.meteringEnabled = YES;
-    [recorder prepareToRecord];
+    self.recorder = [[AVAudioRecorder alloc] initWithURL:outputFileURL settings:[self getRecorderSettings] error:NULL];
+    self.recorder.delegate = self;
+    self.recorder.meteringEnabled = YES;
+    [self.recorder prepareToRecord];
 }
 
 - (void)startRecording {
     [self stopPlayingAndRecording];
 
-    AVAudioSession *session = [AVAudioSession sharedInstance];
-    [session setActive:YES error:nil];
+    [[AVAudioSession sharedInstance] setActive:YES error:nil];
 
-    [recorder recordForDuration:self.duration];
+    [self.recorder recordForDuration:self.duration];
 }
 
 - (void)stopRecording {
-    if (recorder.recording) {
-        [recorder stop];
-        [recorder deleteRecording];
+    if (self.recorder.recording) {
+        [self.recorder stop];
+        [self.recorder deleteRecording];
 
-        AVAudioSession *audioSession = [AVAudioSession sharedInstance];
-        [audioSession setActive:NO error:nil];
+        [[AVAudioSession sharedInstance] setActive:NO error:nil];
     }
 }
 
 - (void)startPlaying {
     [self stopPlayingAndRecording];
 
-    player = [[AVAudioPlayer alloc] initWithContentsOfURL:recorder.url error:nil];
-    [player setDelegate:self];
-    [player play];
+    self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:self.recorder.url error:nil];
+    [self.player setDelegate:self];
+    [self.player play];
 }
 
 - (void)stopPlaying {
-    if (player.playing) {
-        [player stop];
+    if (self.player.playing) {
+        [self.player stop];
     }
 }
 
@@ -85,25 +83,19 @@
 }
 
 - (NSInteger)timeLeft {
-    if (recorder) {
-        return (NSInteger) (self.duration - [recorder currentTime] + 1);
+    if (self.recorder) {
+        return (NSInteger) (self.duration - [self.recorder currentTime] + 1);
     } else {
         return 0;
     }
 }
 
 - (BOOL)recording {
-    return recorder.recording;
+    return self.recorder.recording;
 }
 
 - (BOOL)playing {
-    return player.playing;
-}
-
-- (void)audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag {
-    if (flag) {
-        // pass
-    }
+    return self.player.playing;
 }
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {

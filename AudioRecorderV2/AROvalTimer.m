@@ -8,18 +8,14 @@
 
 #import "AROvalTimer.h"
 
-@interface AROvalTimer () {
-    CGFloat oneMomentInAngle;
-    CGFloat elapsedTimeInAngle;
-}
+@interface AROvalTimer ()
 
 @property(nonatomic) CGFloat ovalTimerStartAngle;
-
-@property(nonatomic, strong) NSTimer *timer;
-
-@property(nonatomic, strong) UIBezierPath *ovalPath;
-
+@property(strong) NSTimer *timer;
+@property(strong) UIBezierPath *ovalPath;
 @property(nonatomic) CGFloat halfSize;
+@property(nonatomic) CGFloat oneMomentInAngle;
+@property(nonatomic) CGFloat elapsedTimeInAngle;
 
 @end
 
@@ -28,8 +24,9 @@
 - (void)initTimerWithDuration:(CGFloat)duration {
     [self stopTimer];
     self.halfSize = [self frame].size.width / 2;
-    oneMomentInAngle = MAX_ANGLE / (duration * FPS);
+    self.oneMomentInAngle = MAX_ANGLE / (duration * FPS);
     self.ovalTimerStartAngle = OVAL_TIMER_END_ANGLE;
+    self.elapsedTimeInAngle = 0;
     self.timer = [NSTimer timerWithTimeInterval:(1 / FPS) target:self selector:@selector(tick) userInfo:nil repeats:YES];
 }
 
@@ -39,7 +36,11 @@
     if (self.timer) {
         self.ovalPath = [UIBezierPath bezierPath];
 
-        [self.ovalPath addArcWithCenter:CGPointMake(self.halfSize, self.halfSize) radius:self.halfSize - STROKE_WIDTH startAngle:self.ovalTimerStartAngle * M_PI / 180 endAngle:OVAL_TIMER_END_ANGLE * M_PI / 180 clockwise:YES];
+        [self.ovalPath addArcWithCenter:CGPointMake(self.halfSize, self.halfSize)
+                                 radius:self.halfSize - STROKE_WIDTH
+                             startAngle:self.ovalTimerStartAngle * M_PI / 180
+                               endAngle:OVAL_TIMER_END_ANGLE * M_PI / 180
+                              clockwise:YES];
 
         [[UIColor whiteColor] setStroke];
         self.ovalPath.lineWidth = STROKE_WIDTH;
@@ -68,14 +69,15 @@
 
 - (void)tick {
     // Set elapsed time angle
-    elapsedTimeInAngle += oneMomentInAngle;
+    self.elapsedTimeInAngle += self.oneMomentInAngle;
 
     // Update oval angle
-    self.ovalTimerStartAngle = (OVAL_TIMER_END_ANGLE + elapsedTimeInAngle);
+    self.ovalTimerStartAngle = (OVAL_TIMER_END_ANGLE + self.elapsedTimeInAngle);
     if (self.ovalTimerStartAngle > MAX_ANGLE) {
         self.ovalTimerStartAngle -= MAX_ANGLE;
     }
-    if (elapsedTimeInAngle > MAX_ANGLE) {
+
+    if (self.elapsedTimeInAngle > MAX_ANGLE) {
         [self stopTimer];
     } else {
         [self setNeedsDisplay];

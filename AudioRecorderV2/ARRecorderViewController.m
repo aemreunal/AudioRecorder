@@ -21,41 +21,47 @@
 
 @implementation ARRecorderViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Pass
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initRecorder];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    if (!self.recorder) {
+        [self initRecorder];
+    }
+}
+
+- (void)initRecorder {
     self.recorder = [[ARRecorder alloc] initWithDuration:(long) self.recordingDuration name:self.recordingName delegate:self];
     [self switchToReadyToRecordState];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
 - (IBAction)recordButtonTapped:(UIButton *)sender {
     if (!self.recorder.successfullyRecorded) {
-        if ([self.recorder recording]) {
-            // Have to cancel recording
-            [self switchToReadyToRecordState];
-        } else {
-            // Have to start recording
-            [self switchToRecordingState];
-        }
+        [self toggleRecorderState];
     } else {
-        if ([self.recorder playing]) {
-            // Can stop listening
-            [self switchToReadyToListenAndSubmitState];
-        } else {
-            // Can listen
-            [self switchToListeningState];
-        }
+        [self togglePlayerState];
+    }
+}
+
+- (void)toggleRecorderState {
+    if (![self.recorder recording]) {
+        // Have to start recording
+        [self switchToRecordingState];
+    } else {
+        // Have to cancel recording
+        [self switchToReadyToRecordState];
+    }
+}
+
+- (void)togglePlayerState {
+    if (![self.recorder playing]) {
+        // Can listen
+        [self switchToListeningState];
+    } else {
+        // Can stop listening
+        [self switchToReadyToListenAndSubmitState];
     }
 }
 
@@ -97,8 +103,7 @@
 }
 
 - (void)updateDurationCounter {
-    NSInteger timeLeft = [self.recorder timeLeft];
-    self.durationCounter.text = [NSString stringWithFormat:@"%li", (long) timeLeft];
+    self.durationCounter.text = [NSString stringWithFormat:@"%li", (long) [self.recorder timeLeft]];
     if ([self.recorder timeLeft] <= 0) {
         self.recorder.successfullyRecorded = YES;
         [self stopDurationCounter];
