@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1812D69C196D8A3B0054561E /* Microphone120.png in Resources */ = {isa = PBXBuildFile; fileRef = 1812D69B196D8A3B0054561E /* Microphone120.png */; };
+		1812D69E196D8B790054561E /* LaunchImageR4.png in Resources */ = {isa = PBXBuildFile; fileRef = 1812D69D196D8B790054561E /* LaunchImageR4.png */; };
+		1812D6A0196D8BAA0054561E /* LaunchImage2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1812D69F196D8BAA0054561E /* LaunchImage2x.png */; };
 		1899FD77196C078B0074BF18 /* AROvalTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899FD76196C078B0074BF18 /* AROvalTimer.m */; };
 		189F403D196A803600553199 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189F403C196A803600553199 /* Foundation.framework */; };
 		189F403F196A803600553199 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189F403E196A803600553199 /* CoreGraphics.framework */; };
@@ -40,6 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1812D69B196D8A3B0054561E /* Microphone120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Microphone120.png; sourceTree = "<group>"; };
+		1812D69D196D8B790054561E /* LaunchImageR4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImageR4.png; sourceTree = "<group>"; };
+		1812D69F196D8BAA0054561E /* LaunchImage2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage2x.png; sourceTree = "<group>"; };
 		1899FD75196C078B0074BF18 /* AROvalTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AROvalTimer.h; sourceTree = "<group>"; };
 		1899FD76196C078B0074BF18 /* AROvalTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AROvalTimer.m; sourceTree = "<group>"; };
 		189F4039196A803600553199 /* AudioRecorderV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioRecorderV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +108,9 @@
 		189F4030196A803600553199 = {
 			isa = PBXGroup;
 			children = (
+				1812D69F196D8BAA0054561E /* LaunchImage2x.png */,
+				1812D69D196D8B790054561E /* LaunchImageR4.png */,
+				1812D69B196D8A3B0054561E /* Microphone120.png */,
 				189F4042196A803600553199 /* AudioRecorderV2 */,
 				189F4061196A803700553199 /* AudioRecorderV2Tests */,
 				189F403B196A803600553199 /* Frameworks */,
@@ -286,8 +295,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1812D69E196D8B790054561E /* LaunchImageR4.png in Resources */,
 				189F4055196A803600553199 /* Images.xcassets in Resources */,
+				1812D6A0196D8BAA0054561E /* LaunchImage2x.png in Resources */,
 				189F4047196A803600553199 /* InfoPlist.strings in Resources */,
+				1812D69C196D8A3B0054561E /* Microphone120.png in Resources */,
 				189F4050196A803600553199 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
