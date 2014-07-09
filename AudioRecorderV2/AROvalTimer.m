@@ -17,39 +17,47 @@
 
 @property(nonatomic, strong) NSTimer *timer;
 
+@property(nonatomic, strong) UIBezierPath *ovalPath;
+
+@property(nonatomic) CGFloat halfSize;
+
 @end
 
 @implementation AROvalTimer
 
-- (id)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        elapsedTimeInAngle = 0;
-        self.ovalTimerStartAngle = OVAL_TIMER_END_ANGLE;
-    }
-    return self;
-}
-
 - (void)initTimerWithDuration:(CGFloat)duration {
     [self stopTimer];
+    self.halfSize = [self frame].size.width / 2;
     oneMomentInAngle = MAX_ANGLE / (duration * FPS);
-    elapsedTimeInAngle = 0;
     self.ovalTimerStartAngle = OVAL_TIMER_END_ANGLE;
     self.timer = [NSTimer timerWithTimeInterval:(1 / FPS) target:self selector:@selector(tick) userInfo:nil repeats:YES];
 }
 
 - (void)drawRect:(CGRect)rect {
-//    dispatch_async(dispatch_get_main_queue(), ^{
-    UIBezierPath *ovalTimerPath = [UIBezierPath bezierPath];
-    [ovalTimerPath addArcWithCenter:CGPointMake(CGRectGetMidX([self frame]), CGRectGetMidY([self frame])) radius:CGRectGetWidth([self frame]) / 2 startAngle:self.ovalTimerStartAngle * M_PI / 180 endAngle:OVAL_TIMER_END_ANGLE * M_PI / 180 clockwise:YES];
-    [ovalTimerPath addLineToPoint:CGPointMake(CGRectGetMidX([self frame]), CGRectGetMidY([self frame]))];
-    [ovalTimerPath closePath];
+    [self clearDrawing];
 
-    [[UIColor whiteColor] setFill];
-    [ovalTimerPath fill];
-    CGRect frame = [self frame];
-    NSLog(@"Draw rect x:%f, y:%f, w:%f, h:%f, startAngle:%f", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height, self.ovalTimerStartAngle);
-//    });
+    if (self.timer) {
+        self.ovalPath = [UIBezierPath bezierPath];
+        if (FILLED) {
+            [self.ovalPath addArcWithCenter:CGPointMake(self.halfSize, self.halfSize) radius:self.halfSize startAngle:self.ovalTimerStartAngle * M_PI / 180 endAngle:OVAL_TIMER_END_ANGLE * M_PI / 180 clockwise:YES];
+            [self.ovalPath addLineToPoint:CGPointMake(self.halfSize, self.halfSize)];
+            [self.ovalPath closePath];
+
+            [[UIColor whiteColor] setFill];
+            [self.ovalPath fill];
+        } else {
+            [self.ovalPath addArcWithCenter:CGPointMake(self.halfSize, self.halfSize) radius:self.halfSize - STROKE_WIDTH startAngle:self.ovalTimerStartAngle * M_PI / 180 endAngle:OVAL_TIMER_END_ANGLE * M_PI / 180 clockwise:YES];
+
+            [[UIColor whiteColor] setStroke];
+            self.ovalPath.lineWidth = STROKE_WIDTH;
+            [self.ovalPath stroke];
+        }
+    }
+}
+
+- (void)clearDrawing {
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextClearRect(context, self.bounds);
 }
 
 - (void)startTimer {
@@ -62,22 +70,24 @@
     if (self.timer) {
         [self.timer invalidate];
         self.timer = nil;
+        [self setNeedsDisplay];
     }
 }
 
 - (void)tick {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        // Set elapsed time angle
-        elapsedTimeInAngle += oneMomentInAngle;
+    // Set elapsed time angle
+    elapsedTimeInAngle += oneMomentInAngle;
 
-
-        // Update oval angle
-        self.ovalTimerStartAngle = (OVAL_TIMER_END_ANGLE + elapsedTimeInAngle);
-        if (self.ovalTimerStartAngle > MAX_ANGLE) {
-            self.ovalTimerStartAngle -= MAX_ANGLE;
-        }
+    // Update oval angle
+    self.ovalTimerStartAngle = (OVAL_TIMER_END_ANGLE + elapsedTimeInAngle);
+    if (self.ovalTimerStartAngle > MAX_ANGLE) {
+        self.ovalTimerStartAngle -= MAX_ANGLE;
+    }
+    if (elapsedTimeInAngle > MAX_ANGLE) {
+        [self stopTimer];
+    } else {
         [self setNeedsDisplay];
-    });
+    }
 }
 
 @end

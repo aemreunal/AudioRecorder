@@ -31,15 +31,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.recorder = [[ARRecorder alloc] initWithDuration:(long)self.recordingDuration name:self.recordingName delegate:self];
+    self.recorder = [[ARRecorder alloc] initWithDuration:(long) self.recordingDuration name:self.recordingName delegate:self];
     [self switchToReadyToRecordState];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-//    [self stopDurationCounter];
-//    self.timer = nil;
-//    self.recorder = nil;
 }
 
 - (IBAction)recordButtonTapped:(UIButton *)sender {
@@ -65,10 +62,9 @@
 - (void)switchToReadyToRecordState {
     [self.recorder stopRecording];
     [self stopDurationCounter];
-//    self.ovalTimer.frame = CGRectMake(67, 57, 200, 200);
-    [self.ovalTimer initTimerWithDuration:(CGFloat)self.recordingDuration];
+    [self.ovalTimer initTimerWithDuration:(CGFloat) self.recordingDuration];
     [self setButtonLabel:@"Record" submitButtonVisibility:NO];
-    self.durationCounter.text = [NSString stringWithFormat:@"%li", (long)self.recordingDuration];
+    self.durationCounter.text = [NSString stringWithFormat:@"%li", (long) self.recordingDuration];
 }
 
 - (void)switchToRecordingState {
@@ -80,7 +76,7 @@
 
 - (void)switchToReadyToListenAndSubmitState {
     [self.recorder stopPlaying];
-    [self.ovalTimer initTimerWithDuration:(CGFloat)self.recordingDuration];
+    [self.ovalTimer initTimerWithDuration:(CGFloat) self.recordingDuration];
     [self setButtonLabel:@"Listen" submitButtonVisibility:YES];
     self.durationCounter.text = @"0";
 }
@@ -102,7 +98,7 @@
 
 - (void)updateDurationCounter {
     NSInteger timeLeft = [self.recorder timeLeft];
-    self.durationCounter.text = [NSString stringWithFormat:@"%li", (long)timeLeft];
+    self.durationCounter.text = [NSString stringWithFormat:@"%li", (long) timeLeft];
     if ([self.recorder timeLeft] <= 0) {
         self.recorder.successfullyRecorded = YES;
         [self stopDurationCounter];
@@ -112,7 +108,7 @@
 }
 
 - (void)stopDurationCounter {
-    if(self.timer) {
+    if (self.timer) {
         [self.timer invalidate];
     }
 }
