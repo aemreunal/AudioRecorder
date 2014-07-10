@@ -23,7 +23,8 @@
 
 - (IBAction)recordButtonTapped:(UIButton *)sender {
     if (![self isDurationTextValid]) {
-        UIAlertView *durationError = [[UIAlertView alloc] initWithTitle:@"Invalid Duration" message:@"Please enter a duration between 1 and 180." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        NSString *errorMessage = [NSString stringWithFormat:@"Please enter a duration between 1 and %d.", (int)MAX_RECORDING_DURATION_SECONDS];
+        UIAlertView *durationError = [[UIAlertView alloc] initWithTitle:@"Invalid Duration" message:errorMessage delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         [durationError show];
     }
 }
