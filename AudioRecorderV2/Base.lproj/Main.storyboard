@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -8,11 +8,15 @@
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ARViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dZ8-vT-P3z"/>
+                        <viewControllerLayoutGuide type="bottom" id="FI7-kE-PNe"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="x8L-Ya-6Ir">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8L-Ya-6Ir">
                                 <rect key="frame" x="70" y="200" width="181" height="67"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="46"/>
@@ -24,28 +28,31 @@
                                     <segue destination="ERk-CQ-zIe" kind="modal" identifier="RecorderViewModalSegue" id="pao-HU-zjc"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5" borderStyle="roundedRect" placeholder="Duration" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" id="YI7-1r-KrX">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5" borderStyle="roundedRect" placeholder="Duration" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YI7-1r-KrX">
                                 <rect key="frame" x="49" y="143" width="107" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration" label="Recording duration text field"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="next"/>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration (sec)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hMt-0k-NQy">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration (sec)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMt-0k-NQy">
                                 <rect key="frame" x="49" y="114" width="107" height="21"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="107" id="44u-j2-S3x"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" clearButtonMode="whileEditing" id="vTa-cO-tAG">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vTa-cO-tAG">
                                 <rect key="frame" x="164" y="143" width="107" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration" label="Recording name text field"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet" returnKeyType="done"/>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="E1Y-US-FYL">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1Y-US-FYL">
                                 <rect key="frame" x="164" y="114" width="107" height="21"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -54,6 +61,22 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="x8L-Ya-6Ir" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="Eho-05-HxV"/>
+                            <constraint firstItem="x8L-Ya-6Ir" firstAttribute="top" secondItem="YI7-1r-KrX" secondAttribute="bottom" constant="27" id="Ht8-5r-UaE"/>
+                            <constraint firstItem="YI7-1r-KrX" firstAttribute="baseline" secondItem="vTa-cO-tAG" secondAttribute="baseline" id="JZP-b8-p2N"/>
+                            <constraint firstAttribute="trailing" secondItem="E1Y-US-FYL" secondAttribute="trailing" constant="49" id="NDJ-Op-nXD"/>
+                            <constraint firstItem="vTa-cO-tAG" firstAttribute="leading" secondItem="E1Y-US-FYL" secondAttribute="leading" id="Ohf-rh-lQL"/>
+                            <constraint firstItem="vTa-cO-tAG" firstAttribute="trailing" secondItem="E1Y-US-FYL" secondAttribute="trailing" id="a2s-2f-3ok"/>
+                            <constraint firstItem="E1Y-US-FYL" firstAttribute="leading" secondItem="hMt-0k-NQy" secondAttribute="trailing" constant="8" symbolic="YES" id="aTn-6h-1RR"/>
+                            <constraint firstItem="YI7-1r-KrX" firstAttribute="top" secondItem="hMt-0k-NQy" secondAttribute="bottom" constant="8" symbolic="YES" id="efw-TA-d3v"/>
+                            <constraint firstItem="x8L-Ya-6Ir" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="70" id="fWw-wF-fZz"/>
+                            <constraint firstItem="hMt-0k-NQy" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="49" id="ikz-p9-JK2"/>
+                            <constraint firstItem="hMt-0k-NQy" firstAttribute="top" secondItem="dZ8-vT-P3z" secondAttribute="bottom" constant="94" id="kDR-Iq-e3j"/>
+                            <constraint firstItem="vTa-cO-tAG" firstAttribute="leading" secondItem="YI7-1r-KrX" secondAttribute="trailing" constant="8" symbolic="YES" id="nfJ-fU-omi"/>
+                            <constraint firstItem="hMt-0k-NQy" firstAttribute="baseline" secondItem="E1Y-US-FYL" secondAttribute="baseline" id="uI8-ZT-9RI"/>
+                            <constraint firstItem="YI7-1r-KrX" firstAttribute="leading" secondItem="hMt-0k-NQy" secondAttribute="leading" id="uXk-i4-qTQ"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="jobNameTextField" destination="vTa-cO-tAG" id="QVD-KZ-3eE"/>
@@ -67,45 +90,28 @@
         <scene sceneID="Lhe-o6-Gf5">
             <objects>
                 <viewController id="ERk-CQ-zIe" customClass="ARRecorderViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5Zc-F3-yjA"/>
+                        <viewControllerLayoutGuide type="bottom" id="8bY-uf-bKe"/>
+                    </layoutGuides>
                     <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="KEM-SX-Slj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qwy-ZF-KgH">
-                                <rect key="frame" x="99" y="499" width="123" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <state key="normal" title="Cancel Recording">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancelButtonTapped:" destination="ERk-CQ-zIe" eventType="touchUpInside" id="2fl-6z-nVV"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dGH-b5-KdP">
-                                <rect key="frame" x="85" y="431" width="151" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Submit Recording">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancelButtonTapped:" destination="ERk-CQ-zIe" eventType="touchUpInside" id="hOa-g3-575"/>
-                                    <action selector="submitButtonTapped:" destination="ERk-CQ-zIe" eventType="touchUpInside" id="R0E-jN-x5A"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" id="yUW-8U-YdV" customClass="AROvalTimer">
-                                <rect key="frame" x="60" y="83" width="200" height="200"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yUW-8U-YdV" customClass="AROvalTimer">
+                                <rect key="frame" x="60" y="64" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
                                 </accessibility>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lcw-Ff-WzP" customClass="ARRecordButton">
-                                <rect key="frame" x="80" y="103" width="160" height="160"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lcw-Ff-WzP" customClass="ARRecordButton">
+                                <rect key="frame" x="80" y="84" width="160" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration" label="Start recording button"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="Cxr-xq-TYr"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <state key="normal" title="Record">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -115,34 +121,75 @@
                                     <action selector="recordButtonTapped:" destination="ERk-CQ-zIe" eventType="touchUpInside" id="FwL-8b-8Dp"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time left:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="i8q-Z7-UGW">
-                                <rect key="frame" x="85" y="289" width="151" height="27"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time left:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8q-Z7-UGW">
+                                <rect key="frame" x="85" y="283" width="150" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="yNe-oD-OEi"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZnX-mo-eL6">
-                                <rect key="frame" x="85" y="312" width="151" height="67"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZnX-mo-eL6">
+                                <rect key="frame" x="88" y="306" width="146" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="67" id="gGO-rW-2oq"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="83"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Phf-cm-JL8">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Cancel" id="KCN-Pl-WOa">
+                                        <connections>
+                                            <action selector="cancelButtonTapped:" destination="ERk-CQ-zIe" id="b9t-zo-la7"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="jU9-BC-kVE"/>
+                                    <barButtonItem enabled="NO" title="Submit" id="MFX-TE-Ax3">
+                                        <connections>
+                                            <action selector="submitButtonTapped:" destination="ERk-CQ-zIe" id="bGS-RQ-6iw"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yUW-8U-YdV" firstAttribute="leading" secondItem="KEM-SX-Slj" secondAttribute="leading" constant="60" id="28a-er-IpU"/>
+                            <constraint firstItem="yUW-8U-YdV" firstAttribute="centerX" secondItem="lcw-Ff-WzP" secondAttribute="centerX" id="3Mf-R7-FFb"/>
+                            <constraint firstItem="i8q-Z7-UGW" firstAttribute="leading" secondItem="KEM-SX-Slj" secondAttribute="leading" constant="85" id="AVi-n4-Pfk"/>
+                            <constraint firstAttribute="trailing" secondItem="Phf-cm-JL8" secondAttribute="trailing" id="Cwp-Q8-Cca"/>
+                            <constraint firstItem="ZnX-mo-eL6" firstAttribute="top" secondItem="yUW-8U-YdV" secondAttribute="bottom" constant="42" id="DHD-xk-w8D"/>
+                            <constraint firstAttribute="bottom" secondItem="Phf-cm-JL8" secondAttribute="bottom" id="FoD-d3-2Ng"/>
+                            <constraint firstItem="lcw-Ff-WzP" firstAttribute="leading" secondItem="KEM-SX-Slj" secondAttribute="leading" constant="80" id="Jdk-1f-JuV"/>
+                            <constraint firstItem="lcw-Ff-WzP" firstAttribute="centerX" secondItem="i8q-Z7-UGW" secondAttribute="centerX" id="S78-uG-V5Y"/>
+                            <constraint firstItem="lcw-Ff-WzP" firstAttribute="centerY" secondItem="yUW-8U-YdV" secondAttribute="centerY" id="cT8-zX-Wde"/>
+                            <constraint firstItem="i8q-Z7-UGW" firstAttribute="top" secondItem="yUW-8U-YdV" secondAttribute="bottom" constant="19" id="jW8-pF-oPJ"/>
+                            <constraint firstItem="Phf-cm-JL8" firstAttribute="centerX" secondItem="i8q-Z7-UGW" secondAttribute="centerX" id="lwN-XB-3qx"/>
+                            <constraint firstItem="ZnX-mo-eL6" firstAttribute="leading" secondItem="KEM-SX-Slj" secondAttribute="leading" constant="88" id="noz-1u-7x8"/>
+                            <constraint firstItem="Phf-cm-JL8" firstAttribute="leading" secondItem="KEM-SX-Slj" secondAttribute="leading" id="reI-RZ-AbX"/>
+                            <constraint firstItem="yUW-8U-YdV" firstAttribute="top" secondItem="5Zc-F3-yjA" secondAttribute="bottom" constant="64" id="tw7-z9-9vw"/>
+                            <constraint firstAttribute="trailing" secondItem="ZnX-mo-eL6" secondAttribute="trailing" constant="86" id="ukh-Nb-Dmw"/>
+                            <constraint firstItem="i8q-Z7-UGW" firstAttribute="top" secondItem="lcw-Ff-WzP" secondAttribute="bottom" constant="39" id="wiC-9D-63e"/>
+                        </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="durationCounter" destination="ZnX-mo-eL6" id="qcs-V0-1rm"/>
                         <outlet property="ovalTimer" destination="yUW-8U-YdV" id="pl7-rd-fxu"/>
                         <outlet property="recordButton" destination="lcw-Ff-WzP" id="4pm-iz-K7H"/>
-                        <outlet property="submitRecordingButton" destination="dGH-b5-KdP" id="agT-Qq-Egq"/>
+                        <outlet property="submitButton" destination="MFX-TE-Ax3" id="u0e-QP-XKm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xVD-nv-XNb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="719" y="131"/>
+            <point key="canvasLocation" x="879" y="211"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

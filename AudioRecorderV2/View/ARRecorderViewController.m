@@ -12,7 +12,7 @@
 
 @property(strong, nonatomic) ARRecorder *recorder;
 @property(strong, nonatomic) IBOutlet UIButton *recordButton;
-@property(strong, nonatomic) IBOutlet UIButton *submitRecordingButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *submitButton;
 @property(strong, nonatomic) IBOutlet UILabel *durationCounter;
 @property(strong, nonatomic) IBOutlet AROvalTimer *ovalTimer;
 @property(strong, nonatomic) NSTimer *timer;
@@ -101,7 +101,7 @@
 
 - (void)setButtonLabel:(NSString *)label submitButtonVisibility:(BOOL)visible {
     [self.recordButton setTitle:label forState:UIControlStateNormal];
-    [self.submitRecordingButton setHidden:!visible];
+    [self.submitButton setEnabled:visible];
 }
 
 - (void)startDurationCounter {
