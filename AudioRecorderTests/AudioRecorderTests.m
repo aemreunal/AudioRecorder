@@ -1,6 +1,6 @@
 //
-//  AudioRecorderV2Tests.m
-//  AudioRecorderV2Tests
+//  AudioRecorderTests.m
+//  AudioRecorderTests
 //
 //  Created by A. Emre Ünal on 07/07/14.
 //  Copyright (c) 2014 A. Emre Ünal. All rights reserved.
@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface AudioRecorderV2Tests : XCTestCase
+@interface AudioRecorderTests : XCTestCase
 
 @end
 
-@implementation AudioRecorderV2Tests
+@implementation AudioRecorderTests
 
 - (void)setUp {
     [super setUp];

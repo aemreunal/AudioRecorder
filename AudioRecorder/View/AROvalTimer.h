@@ -1,6 +1,6 @@
 //
 //  AROvalTimer.h
-//  AudioRecorderV2
+//  AudioRecorder
 //
 //  Created by A. Emre Ünal on 08/07/14.
 //  Copyright (c) 2014 A. Emre Ünal. All rights reserved.

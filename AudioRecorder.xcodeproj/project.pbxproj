@@ -24,7 +24,7 @@
 		189F405D196A803700553199 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189F403C196A803600553199 /* Foundation.framework */; };
 		189F405E196A803700553199 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189F4040196A803600553199 /* UIKit.framework */; };
 		189F4066196A803700553199 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 189F4064196A803700553199 /* InfoPlist.strings */; };
-		189F4068196A803700553199 /* AudioRecorderV2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 189F4067196A803700553199 /* AudioRecorderV2Tests.m */; };
+		189F4068196A803700553199 /* AudioRecorderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 189F4067196A803700553199 /* AudioRecorderTests.m */; };
 		189F4072196A804E00553199 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189F4071196A804E00553199 /* AVFoundation.framework */; };
 		189F407D196A827300553199 /* ARRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 189F407C196A827300553199 /* ARRecorder.m */; };
 		189F4080196A838600553199 /* ARRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189F407F196A838600553199 /* ARRecorderViewController.m */; };
@@ -48,35 +48,35 @@
 		1812D69F196D8BAA0054561E /* LaunchImage2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage2x.png; sourceTree = SOURCE_ROOT; };
 		1899FD75196C078B0074BF18 /* AROvalTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AROvalTimer.h; sourceTree = "<group>"; };
 		1899FD76196C078B0074BF18 /* AROvalTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AROvalTimer.m; sourceTree = "<group>"; };
-		189F4039196A803600553199 /* AudioRecorderV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioRecorderV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		189F4039196A803600553199 /* AudioRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		189F403C196A803600553199 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		189F403E196A803600553199 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		189F4040196A803600553199 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		189F4044196A803600553199 /* AudioRecorderV2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AudioRecorderV2-Info.plist"; sourceTree = "<group>"; };
+		189F4044196A803600553199 /* AudioRecorder-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = "AudioRecorder-Info.plist"; sourceTree = "<group>"; };
 		189F4046196A803600553199 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		189F4048196A803600553199 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		189F404A196A803600553199 /* AudioRecorderV2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AudioRecorderV2-Prefix.pch"; sourceTree = "<group>"; };
-		189F404B196A803600553199 /* ARAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ARAppDelegate.h; path = AudioRecorderV2/ARAppDelegate.h; sourceTree = SOURCE_ROOT; };
-		189F404C196A803600553199 /* ARAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ARAppDelegate.m; path = AudioRecorderV2/ARAppDelegate.m; sourceTree = SOURCE_ROOT; };
+		189F404A196A803600553199 /* AudioRecorder-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AudioRecorder-Prefix.pch"; sourceTree = "<group>"; };
+		189F404B196A803600553199 /* ARAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ARAppDelegate.h; path = AudioRecorder/ARAppDelegate.h; sourceTree = SOURCE_ROOT; };
+		189F404C196A803600553199 /* ARAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ARAppDelegate.m; path = AudioRecorder/ARAppDelegate.m; sourceTree = SOURCE_ROOT; };
 		189F404F196A803600553199 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		189F4051196A803600553199 /* ARViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ARViewController.h; path = AudioRecorderV2/ARViewController.h; sourceTree = SOURCE_ROOT; };
-		189F4052196A803600553199 /* ARViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ARViewController.m; path = AudioRecorderV2/ARViewController.m; sourceTree = SOURCE_ROOT; };
-		189F4054196A803600553199 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = AudioRecorderV2/Images.xcassets; sourceTree = SOURCE_ROOT; };
+		189F4051196A803600553199 /* ARViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ARViewController.h; path = AudioRecorder/ARViewController.h; sourceTree = SOURCE_ROOT; };
+		189F4052196A803600553199 /* ARViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ARViewController.m; path = AudioRecorder/ARViewController.m; sourceTree = SOURCE_ROOT; };
+		189F4054196A803600553199 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = AudioRecorder/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		189F405B196A803700553199 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		189F4063196A803700553199 /* AudioRecorderV2Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AudioRecorderV2Tests-Info.plist"; sourceTree = "<group>"; };
+		189F4063196A803700553199 /* AudioRecorderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = "AudioRecorderTests-Info.plist"; sourceTree = "<group>"; };
 		189F4065196A803700553199 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		189F4067196A803700553199 /* AudioRecorderV2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AudioRecorderV2Tests.m; path = AudioRecorderV2Tests/AudioRecorderV2Tests.m; sourceTree = SOURCE_ROOT; };
+		189F4067196A803700553199 /* AudioRecorderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AudioRecorderTests.m; path = AudioRecorderTests/AudioRecorderTests.m; sourceTree = SOURCE_ROOT; };
 		189F4071196A804E00553199 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		189F407B196A827300553199 /* ARRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARRecorder.h; path = AudioRecorderV2/Model/ARRecorder.h; sourceTree = SOURCE_ROOT; };
-		189F407C196A827300553199 /* ARRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ARRecorder.m; path = AudioRecorderV2/Model/ARRecorder.m; sourceTree = SOURCE_ROOT; };
+		189F407B196A827300553199 /* ARRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARRecorder.h; path = AudioRecorder/Model/ARRecorder.h; sourceTree = SOURCE_ROOT; };
+		189F407C196A827300553199 /* ARRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ARRecorder.m; path = AudioRecorder/Model/ARRecorder.m; sourceTree = SOURCE_ROOT; };
 		189F407E196A838600553199 /* ARRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARRecorderViewController.h; sourceTree = "<group>"; };
 		189F407F196A838600553199 /* ARRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRecorderViewController.m; sourceTree = "<group>"; };
 		189F4087196AB32800553199 /* ARRecordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARRecordButton.h; sourceTree = "<group>"; };
 		189F4088196AB32800553199 /* ARRecordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRecordButton.m; sourceTree = "<group>"; };
-		781A91C3FB658FBE017C92EB /* ARRecorderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARRecorderDelegate.h; path = AudioRecorderV2/Delegates/ARRecorderDelegate.h; sourceTree = SOURCE_ROOT; };
-		781A9829233D4BF0D5A4C342 /* ARRecorderViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARRecorderViewControllerDelegate.h; path = AudioRecorderV2/Delegates/ARRecorderViewControllerDelegate.h; sourceTree = SOURCE_ROOT; };
-		781A9D6E14E8E0F06E784913 /* ARFileNameHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ARFileNameHelper.m; path = AudioRecorderV2/Model/ARFileNameHelper.m; sourceTree = SOURCE_ROOT; };
-		781A9F2A87914FB2EB645653 /* ARFileNameHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARFileNameHelper.h; path = AudioRecorderV2/Model/ARFileNameHelper.h; sourceTree = SOURCE_ROOT; };
+		781A91C3FB658FBE017C92EB /* ARRecorderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARRecorderDelegate.h; path = AudioRecorder/Delegates/ARRecorderDelegate.h; sourceTree = SOURCE_ROOT; };
+		781A9829233D4BF0D5A4C342 /* ARRecorderViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARRecorderViewControllerDelegate.h; path = AudioRecorder/Delegates/ARRecorderViewControllerDelegate.h; sourceTree = SOURCE_ROOT; };
+		781A9D6E14E8E0F06E784913 /* ARFileNameHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ARFileNameHelper.m; path = AudioRecorder/Model/ARFileNameHelper.m; sourceTree = SOURCE_ROOT; };
+		781A9F2A87914FB2EB645653 /* ARFileNameHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARFileNameHelper.h; path = AudioRecorder/Model/ARFileNameHelper.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,8 +110,8 @@
 				1812D69F196D8BAA0054561E /* LaunchImage2x.png */,
 				1812D69D196D8B790054561E /* LaunchImageR4.png */,
 				1812D69B196D8A3B0054561E /* Microphone120.png */,
-				189F4042196A803600553199 /* AudioRecorderV2 */,
-				189F4061196A803700553199 /* AudioRecorderV2Tests */,
+				189F4042196A803600553199 /* AudioRecorder */,
+				189F4061196A803700553199 /* AudioRecorderTests */,
 				189F403B196A803600553199 /* Frameworks */,
 				189F403A196A803600553199 /* Products */,
 			);
@@ -120,7 +120,7 @@
 		189F403A196A803600553199 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				189F4039196A803600553199 /* AudioRecorderV2.app */,
+				189F4039196A803600553199 /* AudioRecorder.app */,
 			);
 			name = Products;
 			sourceTree = SOURCE_ROOT;
@@ -137,7 +137,7 @@
 			name = Frameworks;
 			sourceTree = SOURCE_ROOT;
 		};
-		189F4042196A803600553199 /* AudioRecorderV2 */ = {
+		189F4042196A803600553199 /* AudioRecorder */ = {
 			isa = PBXGroup;
 			children = (
 				189F4051196A803600553199 /* ARViewController.h */,
@@ -151,38 +151,38 @@
 				189F4073196A806F00553199 /* View */,
 				781A99A3760D1AD37A5F3280 /* Delegates */,
 			);
-			path = AudioRecorderV2;
+			path = AudioRecorder;
 			sourceTree = SOURCE_ROOT;
 		};
 		189F4043196A803600553199 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				189F4044196A803600553199 /* AudioRecorderV2-Info.plist */,
+				189F4044196A803600553199 /* AudioRecorder-Info.plist */,
 				189F4045196A803600553199 /* InfoPlist.strings */,
 				189F4048196A803600553199 /* main.m */,
-				189F404A196A803600553199 /* AudioRecorderV2-Prefix.pch */,
+				189F404A196A803600553199 /* AudioRecorder-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			path = AudioRecorderV2;
+			path = AudioRecorder;
 			sourceTree = SOURCE_ROOT;
 		};
-		189F4061196A803700553199 /* AudioRecorderV2Tests */ = {
+		189F4061196A803700553199 /* AudioRecorderTests */ = {
 			isa = PBXGroup;
 			children = (
-				189F4067196A803700553199 /* AudioRecorderV2Tests.m */,
+				189F4067196A803700553199 /* AudioRecorderTests.m */,
 				189F4062196A803700553199 /* Supporting Files */,
 			);
-			path = AudioRecorderV2Tests;
+			path = AudioRecorderTests;
 			sourceTree = SOURCE_ROOT;
 		};
 		189F4062196A803700553199 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				189F4063196A803700553199 /* AudioRecorderV2Tests-Info.plist */,
+				189F4063196A803700553199 /* AudioRecorderTests-Info.plist */,
 				189F4064196A803700553199 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			path = AudioRecorderV2Tests;
+			path = AudioRecorderTests;
 			sourceTree = SOURCE_ROOT;
 		};
 		189F4073196A806F00553199 /* View */ = {
@@ -196,7 +196,7 @@
 				1899FD76196C078B0074BF18 /* AROvalTimer.m */,
 			);
 			name = View;
-			path = AudioRecorderV2/View;
+			path = AudioRecorder/View;
 			sourceTree = SOURCE_ROOT;
 		};
 		189F4074196A807F00553199 /* Model */ = {
@@ -208,7 +208,7 @@
 				781A9F2A87914FB2EB645653 /* ARFileNameHelper.h */,
 			);
 			name = Model;
-			path = AudioRecorderV2/Model;
+			path = AudioRecorder/Model;
 			sourceTree = SOURCE_ROOT;
 		};
 		781A99A3760D1AD37A5F3280 /* Delegates */ = {
@@ -218,15 +218,15 @@
 				781A9829233D4BF0D5A4C342 /* ARRecorderViewControllerDelegate.h */,
 			);
 			name = Delegates;
-			path = AudioRecorderV2/Delegates;
+			path = AudioRecorder/Delegates;
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		189F4038196A803600553199 /* AudioRecorderV2 */ = {
+		189F4038196A803600553199 /* AudioRecorder */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 189F406B196A803700553199 /* Build configuration list for PBXNativeTarget "AudioRecorderV2" */;
+			buildConfigurationList = 189F406B196A803700553199 /* Build configuration list for PBXNativeTarget "AudioRecorder" */;
 			buildPhases = (
 				189F4035196A803600553199 /* Sources */,
 				189F4036196A803600553199 /* Frameworks */,
@@ -236,14 +236,14 @@
 			);
 			dependencies = (
 			);
-			name = AudioRecorderV2;
+			name = AudioRecorder;
 			productName = AudioRecorderV2;
-			productReference = 189F4039196A803600553199 /* AudioRecorderV2.app */;
+			productReference = 189F4039196A803600553199 /* AudioRecorder.app */;
 			productType = "com.apple.product-type.application";
 		};
-		189F4059196A803700553199 /* AudioRecorderV2Tests */ = {
+		189F4059196A803700553199 /* AudioRecorderTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 189F406E196A803700553199 /* Build configuration list for PBXNativeTarget "AudioRecorderV2Tests" */;
+			buildConfigurationList = 189F406E196A803700553199 /* Build configuration list for PBXNativeTarget "AudioRecorderTests" */;
 			buildPhases = (
 				189F4056196A803700553199 /* Sources */,
 				189F4057196A803700553199 /* Frameworks */,
@@ -254,7 +254,7 @@
 			dependencies = (
 				189F4060196A803700553199 /* PBXTargetDependency */,
 			);
-			name = AudioRecorderV2Tests;
+			name = AudioRecorderTests;
 			productName = AudioRecorderV2Tests;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -273,7 +273,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 189F4034196A803600553199 /* Build configuration list for PBXProject "AudioRecorderV2" */;
+			buildConfigurationList = 189F4034196A803600553199 /* Build configuration list for PBXProject "AudioRecorder" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -286,8 +286,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				189F4038196A803600553199 /* AudioRecorderV2 */,
-				189F4059196A803700553199 /* AudioRecorderV2Tests */,
+				189F4038196A803600553199 /* AudioRecorder */,
+				189F4059196A803700553199 /* AudioRecorderTests */,
 			);
 		};
 /* End PBXProject section */
@@ -336,7 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				189F4068196A803700553199 /* AudioRecorderV2Tests.m in Sources */,
+				189F4068196A803700553199 /* AudioRecorderTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,7 +345,7 @@
 /* Begin PBXTargetDependency section */
 		189F4060196A803700553199 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 189F4038196A803600553199 /* AudioRecorderV2 */;
+			target = 189F4038196A803600553199 /* AudioRecorder */;
 			targetProxy = 189F405F196A803700553199 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -365,7 +365,7 @@
 				189F404F196A803600553199 /* Base */,
 			);
 			name = Main.storyboard;
-			path = AudioRecorderV2;
+			path = AudioRecorder;
 			sourceTree = SOURCE_ROOT;
 		};
 		189F4064196A803700553199 /* InfoPlist.strings */ = {
@@ -455,9 +455,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "AudioRecorderV2/AudioRecorderV2-Prefix.pch";
-				INFOPLIST_FILE = "AudioRecorderV2/AudioRecorderV2-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "AudioRecorderV2/AudioRecorder-Prefix.pch";
+				INFOPLIST_FILE = "AudioRecorderV2/AudioRecorder-Info.plist";
+				PRODUCT_NAME = AudioRecorder;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -468,9 +468,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "AudioRecorderV2/AudioRecorderV2-Prefix.pch";
-				INFOPLIST_FILE = "AudioRecorderV2/AudioRecorderV2-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "AudioRecorderV2/AudioRecorder-Prefix.pch";
+				INFOPLIST_FILE = "AudioRecorderV2/AudioRecorder-Info.plist";
+				PRODUCT_NAME = AudioRecorder;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -490,8 +490,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "AudioRecorderV2Tests/AudioRecorderV2Tests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "AudioRecorderV2Tests/AudioRecorderTests-Info.plist";
+				PRODUCT_NAME = AudioRecorderTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -508,8 +508,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AudioRecorderV2/AudioRecorderV2-Prefix.pch";
-				INFOPLIST_FILE = "AudioRecorderV2Tests/AudioRecorderV2Tests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "AudioRecorderV2Tests/AudioRecorderTests-Info.plist";
+				PRODUCT_NAME = AudioRecorderTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -518,7 +518,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		189F4034196A803600553199 /* Build configuration list for PBXProject "AudioRecorderV2" */ = {
+		189F4034196A803600553199 /* Build configuration list for PBXProject "AudioRecorder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				189F4069196A803700553199 /* Debug */,
@@ -527,7 +527,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		189F406B196A803700553199 /* Build configuration list for PBXNativeTarget "AudioRecorderV2" */ = {
+		189F406B196A803700553199 /* Build configuration list for PBXNativeTarget "AudioRecorder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				189F406C196A803700553199 /* Debug */,
@@ -536,7 +536,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		189F406E196A803700553199 /* Build configuration list for PBXNativeTarget "AudioRecorderV2Tests" */ = {
+		189F406E196A803700553199 /* Build configuration list for PBXNativeTarget "AudioRecorderTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				189F406F196A803700553199 /* Debug */,
