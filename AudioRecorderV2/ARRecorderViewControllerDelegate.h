@@ -15,6 +15,6 @@
 
 - (void)recordingDidCancel:(ARRecorderViewController *)sender;
 
-- (void)recordingDidFinish:(ARRecorderViewController *)sender withFileName:(NSString *)fileName;
+- (void)recordingDidFinish:(ARRecorderViewController *)sender withFileURL:(NSURL *)fileURL;
 
 @end

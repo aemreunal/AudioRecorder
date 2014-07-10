@@ -17,63 +17,76 @@
 
 @implementation ARRecorder
 
-- (instancetype)initWithDuration:(NSInteger)duration name:(NSString *)name delegate:(id <ARRecorderDelegate>)delegate {
+- (instancetype)initAsRecorderWithName:(NSString *)name duration:(NSInteger)duration {
     self = [super init];
     if (self) {
+        [self initAudioSessionWithFile:[NSString stringWithFormat:@"%@.m4a", name]];
         self.duration = duration;
-        self.recordingFileName = [NSString stringWithFormat:@"%@.m4a", name];
-        self.delegate = delegate;
-        self.successfullyRecorded = NO;
-
-        [self setAudioSession];
-        [self setRecorder];
+        self.recordingDidFinish = NO;
+        [self createRecorder];
     }
     return self;
 }
 
-- (void)setAudioSession {
+- (instancetype)initAsPlayerForFile:(NSString *)name {
+    self = [super init];
+    if (self) {
+        [self initAudioSessionWithFile:name];
+        self.recordingDidFinish = YES;
+        [self createPlayer];
+    }
+    return self;
+}
+
+- (void)initAudioSessionWithFile:(NSString *)fileName {
+    NSArray *pathComponents = [NSArray arrayWithObjects:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject], fileName, nil];
+    self.recordingFileURL = [NSURL fileURLWithPathComponents:pathComponents];
     AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
 }
 
-- (void)setRecorder {
-    NSArray *pathComponents = [NSArray arrayWithObjects:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject], self.recordingFileName, nil];
-    NSURL *outputFileURL = [NSURL fileURLWithPathComponents:pathComponents];
-
-    self.recorder = [[AVAudioRecorder alloc] initWithURL:outputFileURL settings:[self getRecorderSettings] error:NULL];
+- (void)createRecorder {
+    self.recorder = [[AVAudioRecorder alloc] initWithURL:self.recordingFileURL settings:[self getRecorderSettings] error:NULL];
     self.recorder.delegate = self;
     self.recorder.meteringEnabled = YES;
     [self.recorder prepareToRecord];
 }
 
+- (void)createPlayer {
+    self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:self.recordingFileURL error:nil];
+    self.player.delegate = self;
+    [self.player prepareToPlay];
+}
+
 - (void)startRecording {
     [self stopPlayingAndRecording];
-
+    if (!self.recorder) {
+        [self createRecorder];
+    }
     [[AVAudioSession sharedInstance] setActive:YES error:nil];
-
     [self.recorder recordForDuration:self.duration];
 }
 
 - (void)stopRecording {
-    if (self.recorder.recording) {
+    if (self.recorder && self.recorder.recording) {
         [self.recorder stop];
         [self.recorder deleteRecording];
-
         [[AVAudioSession sharedInstance] setActive:NO error:nil];
     }
 }
 
 - (void)startPlaying {
     [self stopPlayingAndRecording];
-
-    self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:self.recorder.url error:nil];
-    [self.player setDelegate:self];
+    if (!self.player) {
+        [self createPlayer];
+    }
     [self.player play];
 }
 
 - (void)stopPlaying {
-    if (self.player.playing) {
+    if (self.player && self.player.playing) {
         [self.player stop];
+        [self.player setCurrentTime:0];
     }
 }
 
@@ -91,11 +104,19 @@
 }
 
 - (BOOL)recording {
-    return self.recorder.recording;
+    if (self.recorder) {
+        return self.recorder.recording;
+    } else {
+        return NO;
+    }
 }
 
 - (BOOL)playing {
-    return self.player.playing;
+    if (self.player) {
+        return self.player.playing;
+    } else {
+        return NO;
+    }
 }
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {

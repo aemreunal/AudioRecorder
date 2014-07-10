@@ -19,6 +19,7 @@
 
 @property(nonatomic) NSInteger recordingDuration;
 @property(strong, nonatomic) NSString *recordingName;
+@property(nonatomic) BOOL shouldOnlyPlay;
 
 - (IBAction)recordButtonTapped:(UIButton *)sender;
 

@@ -15,10 +15,12 @@
 @property(strong, nonatomic) id <ARRecorderDelegate> delegate;
 
 @property(nonatomic) NSInteger duration;
-@property(strong, nonatomic) NSString *recordingFileName;
-@property(nonatomic) BOOL successfullyRecorded;
+@property(strong, nonatomic) NSURL *recordingFileURL;
+@property(nonatomic) BOOL recordingDidFinish;
 
-- (instancetype)initWithDuration:(NSInteger)duration name:(NSString *)name delegate:(id <ARRecorderDelegate>)delegate;
+- (instancetype)initAsRecorderWithName:(NSString *)name duration:(NSInteger)duration;
+
+- (instancetype)initAsPlayerForFile:(NSString *)name;
 
 - (void)startRecording;
 

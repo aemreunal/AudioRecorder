@@ -33,12 +33,19 @@
 }
 
 - (void)initRecorder {
-    self.recorder = [[ARRecorder alloc] initWithDuration:(long) self.recordingDuration name:self.recordingName delegate:self];
-    [self switchToReadyToRecordState];
+    self.recorder = [ARRecorder alloc];
+    if(!self.shouldOnlyPlay) {
+        self.recorder = [self.recorder initAsRecorderWithName:self.recordingName duration:(long) self.recordingDuration];
+        [self switchToReadyToRecordState];
+    } else {
+        self.recorder = [self.recorder initAsPlayerForFile:self.recordingName];
+        [self switchToReadyToListenAndSubmitState];
+    }
+    self.recorder.delegate = self;
 }
 
 - (IBAction)recordButtonTapped:(UIButton *)sender {
-    if (!self.recorder.successfullyRecorded) {
+    if (!self.recorder.recordingDidFinish) {
         [self toggleRecorderState];
     } else {
         [self togglePlayerState];
@@ -105,7 +112,7 @@
 - (void)updateDurationCounter {
     self.durationCounter.text = [NSString stringWithFormat:@"%li", (long) [self.recorder timeLeft]];
     if ([self.recorder timeLeft] <= 0) {
-        self.recorder.successfullyRecorded = YES;
+        self.recorder.recordingDidFinish = YES;
         [self stopDurationCounter];
         [self.ovalTimer stopTimer];
         [self switchToReadyToListenAndSubmitState];
@@ -120,8 +127,8 @@
 
 - (IBAction)submitButtonTapped:(UIButton *)sender {
     [self.recorder stopPlaying];
-    if (self.recorder.successfullyRecorded) {
-        [self.delegate recordingDidFinish:self withFileName:self.recorder.recordingFileName];
+    if (self.recorder.recordingDidFinish) {
+        [self.delegate recordingDidFinish:self withFileURL:self.recorder.recordingFileURL];
     }
 }
 

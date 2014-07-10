@@ -21,11 +21,6 @@
     [self.recordingDurationTextField setReturnKeyType:UIReturnKeyNext];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (IBAction)recordButtonTapped:(UIButton *)sender {
     if (![self isDurationTextValid]) {
         UIAlertView *durationError = [[UIAlertView alloc] initWithTitle:@"Invalid Duration" message:@"Please enter a duration between 1 and 180." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
@@ -41,8 +36,18 @@
     if ([segue.identifier isEqualToString:@"RecorderViewModalSegue"]) {
         ARRecorderViewController *recorderViewController = (ARRecorderViewController *) segue.destinationViewController;
         recorderViewController.delegate = self;
+
+        /*
+        // To play a supplied audio file:
+        recorderViewController.shouldOnlyPlay = YES;
+        recorderViewController.recordingName = <<Recording file name with file extension>>;
+        (Ex: recorderViewController.recordingName = @"job-iPhone-Simulator-2014-07-10-07-29-26.m4a";)
+        */
+
+        // To record an audio file:
+        recorderViewController.shouldOnlyPlay = NO;
+        recorderViewController.recordingName = [self getJobName]; // Without any file extension
         recorderViewController.recordingDuration = [self getRecordingDuration];
-        recorderViewController.recordingName = [self getJobName];
     }
 }
 
@@ -77,7 +82,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)recordingDidFinish:(ARRecorderViewController *)sender withFileName:(NSString *)fileName {
+- (void)recordingDidFinish:(ARRecorderViewController *)sender withFileURL:(NSURL *)fileURL {
     // Need to do appropriate action when recording is finished successfully,
     // like uploading it.
     [self dismissViewControllerAnimated:YES completion:nil];
