@@ -129,6 +129,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.destinationViewController isKindOfClass:[ARViewController class]]) {
+//        if (segue.identifier == @"SubmitUnwindSegue") {
         if (sender == self.submitButton) {
             [self.recorder stopPlaying];
             if (self.recorder.recordingDidFinish) {
