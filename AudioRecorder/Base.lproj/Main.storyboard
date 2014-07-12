@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Vzu-AQ-5Xa">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -78,6 +78,8 @@
                             <constraint firstItem="YI7-1r-KrX" firstAttribute="leading" secondItem="hMt-0k-NQy" secondAttribute="leading" id="uXk-i4-qTQ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="8lP-VA-hMN"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="jobNameTextField" destination="vTa-cO-tAG" id="QVD-KZ-3eE"/>
                         <outlet property="recordingDurationTextField" destination="YI7-1r-KrX" id="eyx-RB-jAA"/>
@@ -85,6 +87,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="j08-NF-0Bn">
+            <objects>
+                <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="Vzu-AQ-5Xa" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yyg-HI-fqu">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="zkL-6A-eZ9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rr3-u4-wPS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="37" y="133"/>
         </scene>
         <!--Recorder View Controller-->
         <scene sceneID="Lhe-o6-Gf5">
@@ -147,13 +165,13 @@
                                 <items>
                                     <barButtonItem title="Cancel" id="KCN-Pl-WOa">
                                         <connections>
-                                            <action selector="cancelButtonTapped:" destination="ERk-CQ-zIe" id="b9t-zo-la7"/>
+                                            <segue destination="1my-Wl-vhG" kind="unwind" unwindAction="unwindFromRecorderViewController:" id="jOv-sE-Jt5"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="jU9-BC-kVE"/>
                                     <barButtonItem enabled="NO" title="Submit" id="MFX-TE-Ax3">
                                         <connections>
-                                            <action selector="submitButtonTapped:" destination="ERk-CQ-zIe" id="bGS-RQ-6iw"/>
+                                            <segue destination="1my-Wl-vhG" kind="unwind" unwindAction="unwindFromRecorderViewController:" id="QwQ-Cn-0pb"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -181,6 +199,7 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="cancelButton" destination="KCN-Pl-WOa" id="bI6-ow-8Rd"/>
                         <outlet property="durationCounter" destination="ZnX-mo-eL6" id="qcs-V0-1rm"/>
                         <outlet property="ovalTimer" destination="yUW-8U-YdV" id="pl7-rd-fxu"/>
                         <outlet property="recordButton" destination="lcw-Ff-WzP" id="4pm-iz-K7H"/>
@@ -188,8 +207,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xVD-nv-XNb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="1my-Wl-vhG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="879" y="211"/>
+            <point key="canvasLocation" x="792" y="133"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

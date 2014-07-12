@@ -7,12 +7,14 @@
 //
 
 #import "ARRecorderViewController.h"
+#import "ARViewController.h"
 
 @interface ARRecorderViewController ()
 
 @property(strong, nonatomic) ARRecorder *recorder;
 @property(strong, nonatomic) IBOutlet UIButton *recordButton;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *submitButton;
+@property(strong, nonatomic) IBOutlet UIBarButtonItem *submitButton;
+@property(strong, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property(strong, nonatomic) IBOutlet UILabel *durationCounter;
 @property(strong, nonatomic) IBOutlet AROvalTimer *ovalTimer;
 @property(strong, nonatomic) NSTimer *timer;
@@ -34,7 +36,7 @@
 
 - (void)initRecorder {
     self.recorder = [ARRecorder alloc];
-    if(!self.shouldOnlyPlay) {
+    if (!self.shouldOnlyPlay) {
         self.recorder = [self.recorder initAsRecorderWithName:self.recordingName duration:(long) self.recordingDuration];
         [self switchToReadyToRecordState];
     } else {
@@ -125,16 +127,18 @@
     }
 }
 
-- (IBAction)submitButtonTapped:(UIButton *)sender {
-    [self.recorder stopPlaying];
-    if (self.recorder.recordingDidFinish) {
-        [self.delegate recordingDidFinish:self withFileURL:self.recorder.recordingFileURL];
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationViewController isKindOfClass:[ARViewController class]]) {
+        if (sender == self.submitButton) {
+            [self.recorder stopPlaying];
+            if (self.recorder.recordingDidFinish) {
+                [self.delegate recordingDidFinish:self withFileURL:self.recorder.recordingFileURL];
+            }
+        } else if (sender == self.cancelButton) {
+            [self.recorder stopPlayingAndRecording];
+            [self.delegate recordingDidCancel:self];
+        }
     }
-}
-
-- (IBAction)cancelButtonTapped:(UIButton *)sender {
-    [self.recorder stopPlayingAndRecording];
-    [self.delegate recordingDidCancel:self];
 }
 
 @end

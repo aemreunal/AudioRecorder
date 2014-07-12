@@ -11,8 +11,6 @@
 #import "ARRecorderViewControllerDelegate.h"
 #import "ARFileNameHelper.h"
 
-const NSInteger MAX_RECORDING_DURATION_SECONDS = 180;
-
 @interface ARViewController : UIViewController <ARRecorderViewControllerDelegate, UITextFieldDelegate>
 
 @property(strong, nonatomic) IBOutlet UITextField *jobNameTextField;

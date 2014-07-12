@@ -14,6 +14,8 @@
 
 @implementation ARViewController
 
+const NSInteger MAX_RECORDING_DURATION_SECONDS = 180;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.jobNameTextField.delegate = self;
@@ -23,7 +25,7 @@
 
 - (IBAction)recordButtonTapped:(UIButton *)sender {
     if (![self isDurationTextValid]) {
-        NSString *errorMessage = [NSString stringWithFormat:@"Please enter a duration between 1 and %d.", (int)MAX_RECORDING_DURATION_SECONDS];
+        NSString *errorMessage = [NSString stringWithFormat:@"Please enter a duration between 1 and %d.", (int) MAX_RECORDING_DURATION_SECONDS];
         UIAlertView *durationError = [[UIAlertView alloc] initWithTitle:@"Invalid Duration" message:errorMessage delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         [durationError show];
     }
@@ -80,13 +82,19 @@
 
 - (void)recordingDidCancel:(ARRecorderViewController *)sender {
     // Need to do appropriate action when recording is cancelled.
-    [self dismissViewControllerAnimated:YES completion:nil];
+    NSLog(@"Recording did cancel.");
 }
 
 - (void)recordingDidFinish:(ARRecorderViewController *)sender withFileURL:(NSURL *)fileURL {
     // Need to do appropriate action when recording is finished successfully,
     // like uploading it.
-    [self dismissViewControllerAnimated:YES completion:nil];
+    NSLog([NSString stringWithFormat:@"Recording did finish with file URL %@.", [fileURL absoluteString]]);
+}
+
+- (IBAction)unwindFromRecorderViewController:(UIStoryboardSegue *)segue {
+    if ([segue.sourceViewController isKindOfClass:[ARRecorderViewController class]]) {
+        NSLog([NSString stringWithFormat:@"Got back from recorder view controller. Segue ID: %@", segue.identifier]);
+    }
 }
 
 @end

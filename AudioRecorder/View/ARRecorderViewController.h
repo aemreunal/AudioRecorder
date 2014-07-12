@@ -12,7 +12,6 @@
 #import "ARRecorder.h"
 #import "AROvalTimer.h"
 
-
 @interface ARRecorderViewController : UIViewController <ARRecorderDelegate>
 
 @property(strong, nonatomic) id <ARRecorderViewControllerDelegate> delegate;
@@ -22,9 +21,5 @@
 @property(nonatomic) BOOL shouldOnlyPlay;
 
 - (IBAction)recordButtonTapped:(UIButton *)sender;
-
-- (IBAction)submitButtonTapped:(UIButton *)sender;
-
-- (IBAction)cancelButtonTapped:(UIButton *)sender;
 
 @end
