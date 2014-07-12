@@ -87,6 +87,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="151" y="131"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="j08-NF-0Bn">
@@ -116,19 +117,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yUW-8U-YdV" customClass="AROvalTimer">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yUW-8U-YdV" customClass="AROvalTimer">
                                 <rect key="frame" x="60" y="64" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
                                 </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="1tR-Hl-iXv"/>
+                                    <constraint firstAttribute="width" constant="200" id="QAV-oe-x8w"/>
+                                </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lcw-Ff-WzP" customClass="ARRecordButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lcw-Ff-WzP" customClass="ARRecordButton">
                                 <rect key="frame" x="80" y="84" width="160" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration" label="Start recording button"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="Cxr-xq-TYr"/>
+                                    <constraint firstAttribute="width" constant="160" id="ECM-f4-juq"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <state key="normal" title="Record">
@@ -209,7 +215,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xVD-nv-XNb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="1my-Wl-vhG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="667" y="131"/>
+            <point key="canvasLocation" x="633" y="131"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
