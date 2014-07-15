@@ -12,7 +12,7 @@
 
 @interface ARRecorder : NSObject <AVAudioRecorderDelegate, AVAudioPlayerDelegate>
 
-@property(strong, nonatomic) id <ARRecorderDelegate> delegate;
+@property(weak, nonatomic) id <ARRecorderDelegate> delegate;
 
 @property(nonatomic) NSInteger duration;
 @property(strong, nonatomic) NSURL *recordingFileURL;
