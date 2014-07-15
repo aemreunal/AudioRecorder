@@ -56,6 +56,24 @@
     self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:self.recordingFileURL error:nil];
     self.player.delegate = self;
     [self.player prepareToPlay];
+    [self setAudioOutputPort];
+}
+
+- (void)setAudioOutputPort {
+    if (![self areHeadphonesPluggedIn]) {
+        AVAudioSession *session = [AVAudioSession sharedInstance];
+        [session overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:nil];
+    }
+}
+
+- (BOOL)areHeadphonesPluggedIn {
+    NSArray *availableOutputs = [[AVAudioSession sharedInstance] currentRoute].outputs;
+    for (AVAudioSessionPortDescription *portDescription in availableOutputs) {
+        if ([portDescription.portType isEqualToString:AVAudioSessionPortHeadphones]) {
+            return YES;
+        }
+    }
+    return NO;
 }
 
 - (void)startRecording {
