@@ -35,7 +35,7 @@
     CGFloat screenWidth = screenBounds.size.width;
     CGFloat screenHeight = screenBounds.size.height;
 
-    self.recordButtonSize = [self bounds].size.height;
+    self.recordButtonSize = MIN(screenWidth, screenHeight);
 
     CGFloat xPos = (screenWidth - self.recordButtonSize) / 2;
     CGFloat yPos = (screenHeight - self.recordButtonSize) / 2;
