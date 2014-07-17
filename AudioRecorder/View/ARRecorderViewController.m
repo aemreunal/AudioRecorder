@@ -25,10 +25,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initRecorder];
+    if (!self.recorder) {
+        [self initRecorder];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     if (!self.recorder) {
         [self initRecorder];
     }

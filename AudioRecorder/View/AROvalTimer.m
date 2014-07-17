@@ -38,8 +38,8 @@
 
         [self.ovalPath addArcWithCenter:CGPointMake(self.halfSize, self.halfSize)
                                  radius:self.halfSize - STROKE_WIDTH
-                             startAngle:self.ovalTimerStartAngle * M_PI / 180
-                               endAngle:OVAL_TIMER_END_ANGLE * M_PI / 180
+                             startAngle:(CGFloat) (self.ovalTimerStartAngle * M_PI / 180.0f)
+                               endAngle:(CGFloat) (OVAL_TIMER_END_ANGLE * M_PI / 180.0f)
                               clockwise:YES];
 
         [[UIColor whiteColor] setStroke];
